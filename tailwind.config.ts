@@ -2,16 +2,56 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: "1rem",
+        sm: "2rem",
+        lg: "2rem",
+        xl: "2rem",
+        "2xl": "2rem",
+      },
+    },
+
+    fontSize: {
+      xs: "0.75rem", // 12px
+      sm: "0.875rem", // 14px
+      base: "1.0625rem", // 17px
+      lg: "1.1875rem", // 19px
+      xl: "1.3125rem", // 21px
+      "2xl": "1.5rem", // 24px
+      "3xl": "1.75rem", // 28px
+      "4xl": "2.5rem", // 40px
+      "5xl": "4.5rem", // 72px
+    },
+    colors: {
+      primary: {
+        light: "#717c82",
+        DEFAULT: "#53565a",
+        dark: "#000",
+      },
+    },
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      fontFamily: {
+        sans: ["var(--font-poppins)"],
+        mono: "Courier, monospace",
+      },
+      screens: {
+        "3xl": "1792px",
+      },
+      reveal: {
+        from: {
+          transform: "translateY(100%)",
+          opacity: "0",
+        },
+        to: {
+          transform: "translateY(0%)",
+          opacity: "1",
+        },
       },
     },
   },
