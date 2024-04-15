@@ -1,7 +1,9 @@
 import Portfolio from "@/components/Portfolio/Portfolio";
+import { getFeaturedProducts } from "@/lib/data";
 import Link from "next/link";
 
-export default function Produtos() {
+export default async function Produtos() {
+  const products = await getFeaturedProducts();
   return (
     <>
       <div className="container mt-6 md:mt-16">
@@ -21,7 +23,11 @@ export default function Produtos() {
         </section>
       </div>
 
-      <Portfolio amountOfProducts={6} categoryId={null} tags={{}} />
+      <Portfolio products={products}>
+        <Link className="button medium w-full my-6" href="/produtos">
+          Confira todos os produtos
+        </Link>
+      </Portfolio>
     </>
   );
 }

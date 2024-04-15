@@ -1,6 +1,14 @@
 import Hero from "@/app/produtos/Hero";
+import EmptyPortfolio from "@/components/Portfolio/EmptyPortfolio";
+import FilterByCategory from "@/components/Portfolio/FilterByCategory";
+import FilterByTag from "@/components/Portfolio/FilterByTag";
 import Portfolio from "@/components/Portfolio/Portfolio";
-import { getAllProductCategories, getCategoryId } from "@/lib/data";
+import PortfolioFilter from "@/components/Portfolio/PortfolioFilter";
+import {
+  getProductCategories,
+  getProductsAndFilters,
+  getProductsByCategory,
+} from "@/lib/data";
 
 export default async function Categoria({
   params,
@@ -11,23 +19,30 @@ export default async function Categoria({
     query?: string;
   };
 }) {
-  //console.log(searchParams, "Query Página de categoria de produto");
-
+  const products = await getProductsByCategory(params.category);
+  const { filteredProducts, tagButtons } = await getProductsAndFilters(
+    searchParams,
+    products
+  );
   return (
     <>
       <Hero>Nossos produtos</Hero>
-      <Portfolio
-        amountOfProducts={30}
-        categoryId={params.category}
-        tags={searchParams || {}}
-      />
+      <PortfolioFilter>
+        <FilterByCategory />
+        <FilterByTag tags={tagButtons} />
+      </PortfolioFilter>
+      <Portfolio products={filteredProducts}>
+        <EmptyPortfolio
+          products={filteredProducts}
+          category={params.category}
+        />
+      </Portfolio>
     </>
   );
 }
 export async function generateStaticParams() {
-  const productCategories = await getAllProductCategories();
-
-  return productCategories.map((item: any) => ({
+  const categories = await getProductCategories();
+  return categories.map((item: any) => ({
     category: item.slug,
   }));
 }

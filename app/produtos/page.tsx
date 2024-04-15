@@ -1,23 +1,31 @@
-import Image from "next/image";
 import Hero from "@/app/produtos/Hero";
 import Portfolio from "@/components/Portfolio/Portfolio";
+import { getProducts, getProductsAndFilters } from "@/lib/data";
+import PortfolioFilter from "@/components/Portfolio/PortfolioFilter";
+import FilterByCategory from "@/components/Portfolio/FilterByCategory";
+import FilterByTag from "@/components/Portfolio/FilterByTag";
+import EmptyPortfolio from "@/components/Portfolio/EmptyPortfolio";
 
-export default function Page({
+export default async function Page({
   searchParams,
 }: {
-  searchParams?: {
-    query?: string;
+  searchParams: {
+    query: string;
   };
 }) {
-  //console.log(searchParams, "Query Página de Produto");
+  const products = await getProducts();
+  const { tagFilters, filteredProducts, tagButtons } =
+    await getProductsAndFilters(searchParams, products);
   return (
     <>
       <Hero>Nossos produtos</Hero>
-      <Portfolio
-        amountOfProducts={30}
-        categoryId={null}
-        tags={searchParams || {}}
-      />
+      <PortfolioFilter>
+        <FilterByCategory />
+        <FilterByTag tags={tagButtons} />
+      </PortfolioFilter>
+      <Portfolio products={filteredProducts}>
+        <EmptyPortfolio products={filteredProducts} />
+      </Portfolio>
     </>
   );
 }

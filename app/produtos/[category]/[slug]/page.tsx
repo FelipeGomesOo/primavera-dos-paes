@@ -1,6 +1,7 @@
 import {
   getAllProductCategories,
   getProduct,
+  getProductBySlug,
   getProducts,
   getProductsByCategory,
 } from "@/lib/data";
@@ -19,7 +20,8 @@ export default async function Produto({
 }: {
   params: { category: string; slug: string };
 }) {
-  const product = await getProduct(params.slug);
+  const product = await getProductBySlug(params.slug);
+  console.log(product, "Pagina do produto");
   /* const options: HTMLReactParserOptions = {
     replace({ attribs, children }) {
       if (!attribs) {
@@ -36,7 +38,10 @@ export default async function Produto({
       <div className="container flex gap-6">
         <div className="w-full lg:w-6/12">
           <Image
-            src={product.featuredImage}
+            src={
+              product.featuredImage ||
+              "https://primaveradospaes.com.br/wp-content/uploads/2022/04/amanteigado-site.jpg"
+            }
             alt={product.title}
             width={1200}
             height={600}
