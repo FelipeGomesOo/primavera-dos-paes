@@ -8,4 +8,14 @@ const objExists = (obj: any) => {
 
 const isEmpty = (obj: any) => !Object.keys(obj).length;
 
-export { animationDelay, objExists };
+function extractImageUrls(imagesObject: object) {
+  return Object.entries(imagesObject)
+    .map(([key, value]) => {
+      if (value && value.node && value.node.mediaItemUrl) {
+        return value.node.mediaItemUrl;
+      }
+    })
+    .filter((url) => url);
+}
+
+export { animationDelay, objExists, extractImageUrls };
