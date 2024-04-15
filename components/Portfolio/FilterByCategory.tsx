@@ -1,8 +1,8 @@
 import Category from "@/components/Portfolio/Category";
-import { getAllProductCategories } from "@/lib/data";
+import { getProductCategories } from "@/lib/data";
 import { Suspense } from "react";
 export default async function FilterByCategory() {
-  const categories = await getAllProductCategories();
+  const categories = await getProductCategories();
 
   return (
     <>
