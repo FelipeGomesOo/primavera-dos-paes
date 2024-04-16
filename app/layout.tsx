@@ -21,11 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br" className={poppins.variable}>
-      <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+    <html lang="pt-br" className={`min-h-full ${poppins.variable}`}>
+      <body className="flex flex-col min-h-full">
+        <Header className="flex-none" />
+        <main className="grow">{children}</main>
+        <Footer className="flex-none" />
       </body>
     </html>
   );

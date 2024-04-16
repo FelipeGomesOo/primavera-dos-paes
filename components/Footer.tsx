@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Logo from "@/components/Logo";
-export default function Footer() {
+export default function Footer({ className }: { className: string }) {
   return (
-    <footer className=" py-8  bg-primary-dark text-[#fff]  ">
+    <footer className={`py-8  bg-primary-dark text-[#fff]  ${className}`}>
       <section className="container flex flex-col lg:flex-row gap-2 justify-between ">
         <div className="">
           <p>
