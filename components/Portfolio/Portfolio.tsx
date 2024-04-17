@@ -7,11 +7,13 @@ export default async function Portfolio({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="container grid grid-cols-12  gap-4 gap-y-8 py-6 ">
-      {products.map((product: ProductCard, index: number) => (
-        <ProductCard key={index} product={product} />
-      ))}
+    <>
+      <section className="container grid grid-cols-12  gap-4 gap-y-8 py-6 ">
+        {products.map((product: ProductCard, index: number) => (
+          <ProductCard key={index} product={product} />
+        ))}
+      </section>
       {children}
-    </section>
+    </>
   );
 }

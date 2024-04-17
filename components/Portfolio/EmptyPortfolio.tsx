@@ -9,7 +9,7 @@ export default async function EmptyPortfolio({
 }) {
   const categorySlug = category && category.length > 0 ? category : "";
   const categoryName = category && (await getCategoryBySlug(category));
-  console.log(categoryName, "category name");
+  //console.log(categoryName, "category name");
   const categoryText = categoryName ? (
     <>
       <strong>{categoryName.name.toLowerCase()}</strong>
@@ -21,7 +21,7 @@ export default async function EmptyPortfolio({
   return (
     <>
       {products.length === 0 && (
-        <section className="col-span-12 py-10">
+        <section className="container py-10">
           <h3 className="a">
             Ops! Não encontramos {categoryText} com esse filtro.
           </h3>

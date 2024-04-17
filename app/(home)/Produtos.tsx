@@ -24,9 +24,11 @@ export default async function Produtos() {
       </div>
 
       <Portfolio products={products}>
-        <Link className="button medium w-full my-6" href="/produtos">
-          Confira todos os produtos
-        </Link>
+        <div className="container">
+          <Link className="button medium w-full my-6" href="/produtos">
+            Confira todos os produtos
+          </Link>
+        </div>
       </Portfolio>
     </>
   );
