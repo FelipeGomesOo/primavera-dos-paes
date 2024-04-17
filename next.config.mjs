@@ -19,6 +19,12 @@ const nextConfig = {
         port,
         pathname: "/wp-content/uploads/**",
       },
+      {
+        protocol: protocol.slice(0, -1),
+        hostname: "primaveradospaes.com.br",
+        port,
+        pathname: "/wp-content/uploads/**",
+      },
     ],
   },
 };
