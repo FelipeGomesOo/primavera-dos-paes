@@ -26,12 +26,34 @@ async function fetchAPI(query: string) {
   return json;
 }
 export async function getMenuItems() {
-  const data = await fetchAPI(
+  /* const data = await fetchAPI(
     `menu-items/?
-    menus=2
+    menus=251
     &status=publish
     &_fields=id,title,url`
-  );
+  ); */
+  const data = [
+    {
+      id: 1,
+      title: { rendered: "Início" },
+      url: "https://admin.primaveradospaes.com.br/",
+    },
+    {
+      id: 2,
+      title: { rendered: "Sobre nós" },
+      url: "https://admin.primaveradospaes.com.br/sobre-nos",
+    },
+    {
+      id: 3,
+      title: { rendered: "Produtos" },
+      url: "https://admin.primaveradospaes.com.br/produtos",
+    },
+    {
+      id: 4,
+      title: { rendered: "Contato" },
+      url: "https://admin.primaveradospaes.com.br/contato",
+    },
+  ];
 
   const menu = await data.map((item: any) => {
     return {
@@ -40,128 +62,8 @@ export async function getMenuItems() {
       url: item.url.replace(BASE_URL, "").trim(),
     };
   });
-
+  //console.log(menu, "data getMenuItems");
   return menu;
-}
-export async function getAllProductCategories() {
-  const data = await fetchAPI(
-    `portfolio_category?_fields=
-    name,
-    slug,
-    id
-    &exclude=7,22
-    &hide_empty=true
-    `
-  );
-  return data;
-}
-export async function getProductCategoryById(id: number) {
-  const data = await fetchAPI(
-    `portfolio_category/${id}?_fields=
-    name,
-    slug,
-    id 
-    `
-  );
-  //console.log(data);
-  return data;
-}
-export async function getAllProductTags() {
-  const data = await fetchAPI(
-    `portfolio_tags?_fields=
-    name,
-    slug,
-    id 
-    &hide_empty=true
-    `
-  );
-  //console.log(data);
-  return data;
-}
-export async function getProductTagById(id: number) {
-  const data = await fetchAPI(
-    `portfolio_tags/${id}?_fields=
-    name,
-    slug,
-    id 
-    &hide_empty=true
-    `
-  );
-  //console.log(data);
-  return data;
-}
-
-export async function getCategoryId(slug: string) {
-  const req = await getAllProductCategories();
-  const data = await req.filter((category: any) => category.slug === slug);
-
-  return data[0].id;
-}
-
-export async function getProductssss(amountOfProducts: number) {
-  const data = await fetchAPI(
-    `avada_portfolio?
-    per_page=80&status=publish
-    &_embed=wp:featuredmedia 
-    &orderby=title&order=asc
-    `
-  );
-  const products = await Promise.all(
-    data.map(async (product: any) => {
-      const tagSlugs = await Promise.all(
-        product.portfolio_tags.map(async (tag: any) => {
-          const tagObject = await getProductTagById(tag);
-          return tagObject.slug;
-        })
-      );
-      const category = await Promise.all(
-        product.portfolio_category.map(async (categoryId: any) => {
-          const categoryObject = await getProductCategoryById(categoryId);
-          const filteredCategory =
-            categoryObject.id === 7 || categoryObject.id === 22
-              ? null
-              : categoryObject;
-          //console.log(filteredCategory);
-          return filteredCategory;
-        })
-      );
-
-      return {
-        title: product.title.rendered,
-        slug: product.slug,
-        status: product.status,
-        category: category.filter((cat: any) => cat !== null)[0],
-        tags: tagSlugs,
-        featuredImage: product._embedded["wp:featuredmedia"][0].source_url,
-        content: product.content.rendered,
-      };
-    })
-  );
-  const categorizedProducts = products.filter(
-    (product: any) => product.category !== undefined
-  );
-
-  //console.log(categorizedProducts);
-  return categorizedProducts.slice(0, amountOfProducts);
-}
-
-export async function getProduct(slug: string) {
-  const req = await getProducts(90);
-  const data = req.filter((product: any) => product.slug === slug);
-  //console.log(data[0]);
-  return data[0];
-}
-
-export async function getProductsByCategoryaa(categorySlug: string) {
-  const req = await getProducts(90);
-  const data = req.filter((product: any) => {
-    const isInCategory = categorySlug
-      ? product.category.slug.includes(categorySlug)
-      : true;
-    return isInCategory;
-  });
-  //console.log(data[0]);
-  return data;
 }
 
 async function fetchAPIGraphql(
@@ -169,14 +71,6 @@ async function fetchAPIGraphql(
   { variables }: Record<string, any> = {}
 ) {
   const headers = { "Content-Type": "application/json" };
-
-  /* if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
-    headers[
-      "Authorization"
-    ] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
-  } */
-
-  // WPGraphQL Plugin must be enabled
   const res = await fetch("https://admin.primaveradospaes.com.br/graphql", {
     headers,
     method: "POST",
@@ -244,7 +138,9 @@ export async function getProducts() {
       slug: productCard.slug,
       title: productCard.title,
       excerpt: productCard.camposDeProduto.descricao.descricaoBreve,
-      featuredImage: productCard.featuredImage || null,
+      featuredImage:
+        productCard.featuredImage ||
+        "https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/branquelim.jpg",
       category: productCard.tiposDeProdutos.nodes[0].slug,
       qualities: productCard.qualidades.nodes || null,
       featured:
@@ -261,9 +157,22 @@ export async function getProductBySlug(slug: string) {
   const data = await fetchAPIGraphql(`
     query getProductById {
       produto(id: "${slug}", idType: SLUG) {
+        id
         slug 
         title
         camposDeProduto {
+          precificacao {
+            naLoja {
+              medida
+              peso
+              precoNaLoja
+            }
+            paraEntrega {
+              medida
+              peso
+              precoNaLoja
+            }
+          }
             descricao { 
               descricaoCompleta
             }
@@ -276,7 +185,7 @@ export async function getProductBySlug(slug: string) {
             quando 
             ondeEncontro {
               nodes {
-                id
+                slug
               }
             }
             imagens {
@@ -331,23 +240,39 @@ export async function getProductBySlug(slug: string) {
       }
     }
     `);
+  let p = data.produto;
   const product = {
-    id: data.produto.id,
-    slug: data.produto.slug,
-    title: data.produto.title,
-    content: data.produto.camposDeProduto.descricao.descricaoCompleta,
-    ingredients: data.produto.camposDeProduto.ingredientes,
-    when: data.produto.camposDeProduto.quando,
-    stores: data.produto.camposDeProduto.ondeEncontro.nodes,
-    images: extractImageUrls(data.produto.camposDeProduto.imagens),
-    featuredImage: data.produto.featuredImage || null,
-    category: data.produto.tiposDeProdutos.nodes[0].slug,
-    qualities: data.produto.qualidades.nodes || null,
-    alerts: data.produto.alertas.nodes || null,
-    featured:
-      data.produto.camposDeProduto.destaque?.nodes[0].slug === "em-destaque"
-        ? true
-        : false,
+    id: p.id,
+    slug: p.slug,
+    title: p.title,
+    category: p.tiposDeProdutos.nodes[0],
+    qualities: p.qualidades.nodes || null,
+    alerts: p.alertas.nodes || null,
+    pricing: {
+      store: {
+        unit: p.camposDeProduto.precificacao.naLoja.medida,
+        weight: p.camposDeProduto.precificacao.naLoja.peso || "",
+        price: p.camposDeProduto.precificacao.naLoja.precoNaLoja,
+      },
+      delivery: {
+        unit: p.camposDeProduto.precificacao.paraEntrega.medida,
+        weight: p.camposDeProduto.precificacao.paraEntrega.peso || "",
+        price: p.camposDeProduto.precificacao.paraEntrega.precoNaLoja,
+      },
+    },
+    conservation: p.camposDeProduto.conservation,
+    content: p.camposDeProduto.descricao.descricaoCompleta,
+    ingredients: p.camposDeProduto.ingredientes,
+    when: p.camposDeProduto.quando,
+    stores: await Promise.all(
+      p.camposDeProduto.ondeEncontro.nodes.map(async (store: Store) => {
+        return await getStoreBySlug(store.slug);
+      })
+    ),
+    images: extractImageUrls(p.camposDeProduto.imagens),
+    featuredImage:
+      p.featuredImage ||
+      "https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/branquelim.jpg",
   };
 
   return product;
@@ -412,11 +337,94 @@ export async function getProductsAndFilters(
   const tagButtons = getTagsfromProducts(filteredProducts);
   return { filteredProducts, tagButtons, tagFilters };
 }
-
 export async function getCategoryBySlug(slug: string) {
   const data = await getProductCategories();
   const category = data.filter(
     (category: ProductCategory) => category.slug === slug
   );
   return category[0];
+}
+export async function getStores() {
+  const data = await fetchAPIGraphql(` 
+  query getStores {
+    lojas(where: {status: PUBLISH}) {
+      nodes {
+        id
+        title
+        slug
+        featuredImage {
+            node {
+              mediaDetails {
+                sizes {
+                  sourceUrl
+                  width
+                  height
+                }
+                height
+                width
+              }
+              mediaItemUrl
+            }
+          }
+        camposDeLojas {
+          bairro
+          telefone
+          logradouro
+          linkDoWhats        
+          mapaDoGoogle {
+            title
+            url
+          }
+          funcionamento {
+            horariosDeSabado
+            horariosDeTercaASexta
+          }
+        }
+      }
+    }
+  }
+  
+    `);
+
+  const stores = data.lojas.nodes.map((s: any) => {
+    return {
+      id: s.id,
+      slug: s.slug,
+      title: s.title,
+      featuredImage: {
+        large: {
+          src: s.featuredImage.node.mediaItemUrl,
+          alt: s.title,
+          width: s.featuredImage.node.mediaDetails.width,
+          height: s.featuredImage.node.mediaDetails.height,
+        },
+        small: {
+          src: s.featuredImage.node.mediaDetails.sizes[0].sourceUrl,
+          alt: s.title,
+          width: s.featuredImage.node.mediaDetails.sizes[0].width,
+          height: s.featuredImage.node.mediaDetails.sizes[0].height,
+        },
+        thumb: {
+          src: s.featuredImage.node.mediaDetails.sizes[1].sourceUrl,
+          alt: s.title,
+          width: s.featuredImage.node.mediaDetails.sizes[1].width,
+          height: s.featuredImage.node.mediaDetails.sizes[1].height,
+        },
+      },
+      Logradouro: s.camposDeLojas.logradouro,
+      Bairro: s.camposDeLojas.bairro,
+      Telefone: s.camposDeLojas.telefone,
+      TuesdayToFridayHours: s.camposDeLojas.funcionamento.horariosDeTercaASexta,
+      SaturdayHours: s.camposDeLojas.funcionamento.horariosDeSabado,
+      MapsLink: s.camposDeLojas.mapaDoGoogle,
+    };
+  });
+  //console.log(stores, "stores Dats.ts");
+  return stores;
+}
+export async function getStoreBySlug(slug: string) {
+  const data = await getStores();
+  const store = data.filter((store: Store) => store.slug === slug);
+  ///console.log(store, "store Data.ts");
+  return store[0];
 }
