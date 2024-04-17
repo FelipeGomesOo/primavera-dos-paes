@@ -27,7 +27,7 @@
 }
 @layer components {
   .button {
-    @apply inline-block border content-center text-center transition-all hover:bg-primary-dark hover:text-[white];
+    @apply inline-block rounded border content-center text-center transition-all hover:bg-primary-dark hover:text-[white];
   }
   .button.small {
     @apply px-2 py-1 text-xs;
