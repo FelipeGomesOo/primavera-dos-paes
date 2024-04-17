@@ -18,4 +18,26 @@ function extractImageUrls(imagesObject: object) {
     .filter((url) => url);
 }
 
-export { animationDelay, objExists, extractImageUrls };
+function generateBreadCrumbObjects(str: string) {
+  if (str[0] === "/") {
+    str = str.slice(1);
+  }
+  const crumbs = str.split("/");
+  let url = "";
+  const array = crumbs.map((crumb, index) => {
+    url += "/" + crumb;
+    return {
+      pageName: crumb,
+      url: url,
+    };
+  });
+
+  return array;
+}
+
+export {
+  animationDelay,
+  objExists,
+  extractImageUrls,
+  generateBreadCrumbObjects,
+};
