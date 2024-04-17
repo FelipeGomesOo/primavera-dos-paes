@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" className={`min-h-full ${poppins.variable}`}>
-      <body className="flex flex-col min-h-full">
+      <body className="flex flex-col min-h-svh ">
         <Header className="flex-none" />
         <main className="grow">{children}</main>
         <Footer className="flex-none" />
