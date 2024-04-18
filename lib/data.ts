@@ -7,6 +7,27 @@ const password = process.env.API_PASSWORD;
 
 const base64Credentials = btoa(`${username}:${password}`);
 
+async function fetchAPIGraphql(
+  query = "",
+  { variables }: Record<string, any> = {}
+) {
+  const headers = { "Content-Type": "application/json" };
+  const res = await fetch("https://admin.primaveradospaes.com.br/graphql", {
+    headers,
+    method: "POST",
+    body: JSON.stringify({
+      query,
+      variables,
+    }),
+  });
+
+  const json = await res.json();
+  if (json.errors) {
+    console.error(json.errors);
+    throw new Error("Failed to fetch API");
+  }
+  return json.data;
+}
 async function fetchAPI(query: string) {
   if (!BASE_URL) {
     throw new Error("BASE_URL is not defined");
@@ -65,29 +86,6 @@ export async function getMenuItems() {
   //console.log(menu, "data getMenuItems");
   return menu;
 }
-
-async function fetchAPIGraphql(
-  query = "",
-  { variables }: Record<string, any> = {}
-) {
-  const headers = { "Content-Type": "application/json" };
-  const res = await fetch("https://admin.primaveradospaes.com.br/graphql", {
-    headers,
-    method: "POST",
-    body: JSON.stringify({
-      query,
-      variables,
-    }),
-  });
-
-  const json = await res.json();
-  if (json.errors) {
-    console.error(json.errors);
-    throw new Error("Failed to fetch API");
-  }
-  return json.data;
-}
-
 export async function getProducts() {
   const data = await fetchAPIGraphql(`
     query getProducts {
@@ -111,8 +109,17 @@ export async function getProducts() {
           }
           featuredImage {
             node {
-              sourceUrl
-            }
+              mediaItemUrl
+              mediaDetails {
+                sizes {
+                  sourceUrl
+                  width
+                  height
+                }
+                height
+                width
+              }
+            }            
           }
           tiposDeProdutos {
             nodes {
@@ -132,19 +139,24 @@ export async function getProducts() {
       }
     }
     `);
-  const products = data.produtos.nodes.map((productCard: any) => {
+  const products = data.produtos.nodes.map((p: any) => {
     return {
-      id: productCard.id,
-      slug: productCard.slug,
-      title: productCard.title,
-      excerpt: productCard.camposDeProduto.descricao.descricaoBreve,
-      featuredImage:
-        productCard.featuredImage ||
-        "https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/branquelim.jpg",
-      category: productCard.tiposDeProdutos.nodes[0].slug,
-      qualities: productCard.qualidades.nodes || null,
+      id: p.id,
+      slug: p.slug,
+      title: p.title,
+      excerpt: p.camposDeProduto.descricao.descricaoBreve,
+      featuredImage: {
+        src:
+          p.featuredImage?.node.mediaItemUrl ||
+          "https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/placeholder-primavera-dos-paes.gif",
+        alt: p.title,
+        width: p.featuredImage?.node.mediaDetails.width || 600,
+        height: p.featuredImage?.node.mediaDetails.height || 420,
+      },
+      category: p.tiposDeProdutos.nodes[0].slug,
+      qualities: p.qualidades.nodes || null,
       featured:
-        productCard.camposDeProduto.destaque?.nodes[0].slug === "em-destaque"
+        p.camposDeProduto.destaque?.nodes[0].slug === "em-destaque"
           ? true
           : false,
     };
@@ -160,7 +172,9 @@ export async function getProductBySlug(slug: string) {
         id
         slug 
         title
+        
         camposDeProduto {
+          conservacao
           precificacao {
             naLoja {
               medida
@@ -174,6 +188,7 @@ export async function getProductBySlug(slug: string) {
             }
           }
             descricao { 
+              descricaoBreve
               descricaoCompleta
             }
             destaque {
@@ -213,8 +228,17 @@ export async function getProductBySlug(slug: string) {
           }
         featuredImage {
             node {
-              sourceUrl
-            }
+              mediaItemUrl
+              mediaDetails {
+                sizes {
+                  sourceUrl
+                  width
+                  height
+                }
+                height
+                width
+              }
+            }            
           }
           tiposDeProdutos {
             nodes {
@@ -260,19 +284,29 @@ export async function getProductBySlug(slug: string) {
         price: p.camposDeProduto.precificacao.paraEntrega.precoNaLoja,
       },
     },
-    conservation: p.camposDeProduto.conservation,
-    content: p.camposDeProduto.descricao.descricaoCompleta,
+    conservation: p.camposDeProduto.conservacao,
+    content:
+      p.camposDeProduto.descricao.descricaoCompleta ||
+      `<p>${p.camposDeProduto.descricao.descricaoBreve}</p>`,
     ingredients: p.camposDeProduto.ingredientes,
     when: p.camposDeProduto.quando,
-    stores: await Promise.all(
-      p.camposDeProduto.ondeEncontro.nodes.map(async (store: Store) => {
-        return await getStoreBySlug(store.slug);
-      })
-    ),
+    stores: p.camposDeProduto.ondeEncontro?.nodes
+      ? await Promise.all(
+          p.camposDeProduto.ondeEncontro.nodes.map(async (store: Store) => {
+            return await getStoreBySlug(store.slug);
+          })
+        )
+      : null,
+
     images: extractImageUrls(p.camposDeProduto.imagens),
-    featuredImage:
-      p.featuredImage ||
-      "https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/branquelim.jpg",
+    featuredImage: {
+      src:
+        p.featuredImage?.node.mediaItemUrl ||
+        "https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/placeholder-primavera-dos-paes.gif",
+      alt: p.title,
+      width: p.featuredImage?.node.mediaDetails.width || 600,
+      height: p.featuredImage?.node.mediaDetails.height || 420,
+    },
   };
 
   return product;
@@ -427,4 +461,66 @@ export async function getStoreBySlug(slug: string) {
   const store = data.filter((store: Store) => store.slug === slug);
   ///console.log(store, "store Data.ts");
   return store[0];
+}
+export async function getSEO(slug: string, type: string) {
+  const data = await fetchAPIGraphql(`
+  query getSEO {
+    ${type} (id: "${slug}", idType: URI) {
+      
+      ${
+        type === "page" || type === "produto" || type === "post"
+          ? `
+          title  
+          featuredImage {
+            node {
+              id
+              srcSet
+              sourceUrl
+              mediaDetails {
+                height
+                width
+              }
+            }
+          }
+      `
+          : "name"
+      }
+      sEO {
+        seo_descricao
+        seo_titulo
+        ogImage {
+          node {
+            sourceUrl
+            mediaDetails {
+              height
+              width
+            }
+          }
+        }
+      }
+    }
+  }
+`);
+
+  const page = {
+    seoDescription: data[type]?.sEO.seo_descricao,
+    seoTitle:
+      data[type]?.sEO.seo_titulo || data[type]?.title || data[type]?.name,
+    ogImage: {
+      src:
+        data[type]?.sEO.ogImage?.node.sourceUrl ||
+        data[type]?.featuredImage?.node.sourceUrl ||
+        `/opengraph-image.jpg`,
+      width:
+        data[type]?.sEO.ogImage?.node.mediaDetails.width ||
+        data[type]?.sEO.featuredImage?.node.mediaDetails.width ||
+        1200,
+      height:
+        data[type]?.sEO.ogImage?.node.mediaDetails.height ||
+        data[type]?.sEO.featuredImage?.node.mediaDetails.height ||
+        630,
+    },
+  };
+  //console.log(page, "Page SEO Data.ts");
+  return page;
 }
