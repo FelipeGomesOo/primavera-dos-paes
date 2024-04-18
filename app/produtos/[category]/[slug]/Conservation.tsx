@@ -1,8 +1,9 @@
 export default function Conservation({ tips }: { tips: string }) {
-  return (
-    <div className="my-6">
+  console.log(tips, "conservação conservation Component");
+  return tips ? (
+    <div>
       <h4>Dicas de conservação</h4>
-      <p>{tips} </p>
+      <p>{tips}</p>
     </div>
-  );
+  ) : null;
 }
