@@ -2,6 +2,7 @@ import Link from "next/link";
 import Logo from "@/components/SVG/Logo";
 import MobileNav from "./MobileNav/MobileNav";
 import { getMenuItems } from "@/lib/data";
+import { animationDelay } from "@/lib/utils";
 export default async function Header({ className }: { className: string }) {
   const menuItems = await getMenuItems();
   return (
@@ -9,8 +10,8 @@ export default async function Header({ className }: { className: string }) {
       <header
         className={`container h-24 flex justify-between items-center mb-14 md:mb-24 ${className}`}
       >
-        <Link href={"/"}>
-          <Logo className="w-[9rem] fill-primary-dark transition-all hover:fill-primary  md:w-[12rem] xl:w-[11rem] md:-translate-x-2 translate-y-2" />
+        <Link href={"/"} style={animationDelay(0)} className="reveal">
+          <Logo className="w-[9rem] fill-primary-dark  hover:fill-primary  md:w-[12rem] xl:w-[11rem] " />
         </Link>
 
         <MobileNav menuItems={menuItems} />

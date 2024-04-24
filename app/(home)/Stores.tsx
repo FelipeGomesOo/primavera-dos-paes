@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 export default function Stores({ stores }: { stores: Store[] }) {
   return (
-    <div className="w-full md:w-6/12">
+    <div className="w-full md:w-6/12 ">
       <div className="mt-6">
         {stores.map((store: Store, index: number) => (
           <Image
@@ -14,7 +14,7 @@ export default function Stores({ stores }: { stores: Store[] }) {
             alt={store.featuredImage.large.alt}
             width={store.featuredImage.large.width}
             height={store.featuredImage.large.height}
-            className="w-full mb-4"
+            className="w-full mb-4 fade-in"
           />
         ))}
       </div>

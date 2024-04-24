@@ -7,7 +7,7 @@ export default async function Produtos() {
   const products = await getFeaturedProducts();
   return (
     <section>
-      <div className="container">
+      <div className="container fade-in">
         <Heading2
           head="Nossos produtos"
           subhead="Simples como farinha, água e sal."

@@ -49,10 +49,11 @@ export default async function Produto({
   badges = badges.concat(product.qualities).concat(product.alerts);
   return (
     <>
-      <div className="container flex flex-col lg:flex-row gap-8 mb-12 justify-between">
+      <div className="container flex flex-col lg:flex-row gap-8 mb-12 justify-between reveal">
         <div className="w-full lg:w-7/12 flex-none">
           <Breadcrumb category={product.category} />
-          <h1 className="mt-2 ">{product.title}</h1>
+
+          <h1 className="mt-2">{product.title}</h1>
 
           <Image
             src={product.featuredImage.src}

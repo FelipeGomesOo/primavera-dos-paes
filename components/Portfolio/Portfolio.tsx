@@ -8,9 +8,9 @@ export default async function Portfolio({
 }) {
   return (
     <>
-      <section className="grid grid-cols-12  gap-4 gap-y-8">
+      <section className="grid grid-cols-12  gap-4 gap-y-8 reveal">
         {products.map((product: ProductCard, index: number) => (
-          <ProductCard key={index} product={product} />
+          <ProductCard key={index} product={product} index={index} />
         ))}
       </section>
       {children}

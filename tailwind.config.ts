@@ -44,19 +44,28 @@ const config: Config = {
         "3xl": "1792px",
       },
       keyframes: {
+        "fade-out-down": {
+          from: {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+          to: {
+            opacity: "0",
+            transform: "translateY(150%)",
+          },
+        },
         reveal: {
           from: {
-            transform: "translateY(100%)",
             opacity: "0",
           },
           to: {
-            transform: "translateY(0%)",
             opacity: "1",
           },
         },
       },
       animation: {
-        reveal: "reveal  2s forwards cubic-bezier(0.165, 0.84, 0.44, 1)",
+        "fade-out-down": "fade-out-down linear forwards",
+        reveal: "reveal forwards cubic-bezier(0.165, 0.84, 0.44, 1)",
       },
     },
   },

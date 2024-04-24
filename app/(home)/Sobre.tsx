@@ -13,7 +13,7 @@ export function SobreCard({
   description: string;
 }) {
   return (
-    <section className="w-full lg:flex gap-6 mt-4 lg:border-t pt-4">
+    <section className="w-full lg:flex gap-6 mt-4 lg:border-t pt-4 fae-in">
       <div className="w-full lg:w-9/12">
         <Image src={src} alt={alt} width={1200} height={300} />
       </div>
@@ -34,7 +34,7 @@ export default function Sobre() {
           alt="hero image"
           width={1776}
           height={999}
-          className="col-span-6  w-full"
+          className="col-span-6  w-full fade-in"
         />
 
         <Image
@@ -42,14 +42,14 @@ export default function Sobre() {
           alt="hero image"
           width={600}
           height={750}
-          className="w-full col-span-2 "
+          className="w-full col-span-2 fade-in"
         />
         <Image
           src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/prateleira.jpg"
           alt="hero image"
           width={600}
           height={750}
-          className="w-full col-span-2 "
+          className="w-full col-span-2 fade-in"
         />
 
         <Image
@@ -57,9 +57,9 @@ export default function Sobre() {
           alt="hero image"
           width={600}
           height={750}
-          className="w-full col-span-2 "
+          className="w-full col-span-2 fade-in"
         />
-        <section className="w-full col-span-5 md:col-span-3 ">
+        <section className="w-full col-span-5 md:col-span-3 fade-in">
           <div className="py-10 px-[1rem] md:px-0 ">
             <p className=" text-lg lg:text-3xl">
               "Tem que ser delicioso e não ter veneno. Temos que saber quem faz,
@@ -73,14 +73,14 @@ export default function Sobre() {
           alt="hero image"
           width={1776}
           height={999}
-          className="col-span-6  w-full"
+          className="col-span-6  w-full fade-in"
         />
       </section>
       <section id="sobre">
         <div className="container">
           <section className="md:border-t-4 pt-4 md:pt-4 flex flex-col md:flex-row relative lg:gap-4 mb-10 ">
             <div className="w-full md:w-6/12 lg:w-6/12 lg:sticky top-10 flex flex-col justify-between  lg:h-[90svh]">
-              <div className="text:lg md:text-3xl">
+              <div className="text:lg md:text-3xl fade-in">
                 <p>
                   "Primavera é mudança. Desde 2020, entramos nesse movimento
                   através das texturas, aromas e sabores que agora são parte da
@@ -91,7 +91,7 @@ export default function Sobre() {
                   escolha também pode ser deliciosa."
                 </p>
               </div>
-              <p className="mt-10 mb-10 lg:mb-0">
+              <p className="mt-10 mb-10 lg:mb-0 fade-in">
                 Eduardo Savino e Jualiana Padilha. <br /> Parceiros de todas as
                 primaveras.
               </p>
@@ -102,9 +102,9 @@ export default function Sobre() {
                 alt="hero image"
                 width={720}
                 height={1080}
-                className="w-full "
+                className="w-full fade-in"
               />
-              <h2 className="mt-10">
+              <h2 className="mt-10 fade-in">
                 Três pilares que definem nosso trabalho:
               </h2>
 

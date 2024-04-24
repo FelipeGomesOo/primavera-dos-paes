@@ -1,4 +1,3 @@
-import Heading2 from "@/components/Heading2";
 import Stores from "./Stores";
 import { getStores } from "@/lib/data";
 import Link from "next/link";
@@ -8,15 +7,15 @@ export default async function Lojas() {
   return (
     <section id="lojas">
       <div className="container">
-        <section className="md:border-t-4 pt-4 md:pt-4 flex flex-col md:flex-row justify-between lg:gap-4 ">
+        <section className="md:border-t-4 pt-4 md:pt-4 flex flex-col md:flex-row justify-between lg:gap-4 fade-in ">
           <div className="w-full md:w-6/12 lg:sticky top-10 lg:h-[90svh] flex flex-col justify-between">
-            <h2 className="mb-10">Nossas lojas</h2>
+            <h2 className="mb-10 fade-in">Nossas lojas</h2>
             <div className=" text-sm lg:pr-10">
               {stores.map((store: Store, index: number) => (
                 <Store key={index} store={store} />
               ))}
-              <h4 className="mt-10 ">Entrega em domicílio?</h4>
-              <p className="lg:pr-10">
+              <h4 className="mt-10 fade-in">Entrega em domicílio?</h4>
+              <p className="lg:pr-10 fade-in">
                 Temos! Das 10h às 20h nos bairros da Zona Sul, Centro e Tijuca
                 pela
                 <Link

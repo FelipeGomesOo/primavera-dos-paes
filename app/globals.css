@@ -47,7 +47,13 @@ html.lenis body {
 @layer components {
   .reveal {
     opacity: 0;
-    @apply animate-reveal;
+    @apply animate-reveal  [animation-duration:2s];
+  }
+  .fade-in {
+    @apply opacity-0 animate-reveal  [animation-range:0svh_10svh] [animation-timeline:view(block)]   sm:[animation-range:cover_5%_contain_30%];
+  }
+  .fade-out-down {
+    @apply animate-fade-out-down [animation-range:0px_70svh] [animation-timeline:scroll()];
   }
   .button {
     @apply inline-block rounded border content-center text-center transition-all hover:bg-primary-dark hover:text-[white];

@@ -3,9 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 export default function Stores({ store }: { store: Store }) {
-  const [open, setOpen] = useState(true);
   return (
-    <section className="group mb-2">
+    <section className="group mb-2 fade-in">
       <div className="border-t border-primary-light pt-1 flex flex-row gap-2 ">
         <div className="grow">
           <h4 className="mb-0 font-bold">{store.Bairro}</h4>
