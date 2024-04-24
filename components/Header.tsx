@@ -10,7 +10,7 @@ export default async function Header({ className }: { className: string }) {
       <header
         className={`container h-24 flex justify-between items-center mb-14 md:mb-24 ${className}`}
       >
-        <Link href={"/"} style={animationDelay(0)} className="reveal">
+        <Link href={"/"}>
           <Logo className="w-[9rem] fill-primary-dark  hover:fill-primary  md:w-[12rem] xl:w-[11rem] " />
         </Link>
 

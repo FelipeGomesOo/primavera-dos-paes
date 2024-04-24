@@ -61,7 +61,7 @@ export default function RootLayout({
       className={`min-h-full ${courier.variable} ${poppins.variable} `}
     >
       <GoogleTagManager gtmId="GTM-NGZXTL2Z" />
-      <body className="flex flex-col min-h-svh ">
+      <body className="flex flex-col min-h-svh">
         <FloatingWhatsapp />
         <Header className="flex-none" />
         <main className="grow">{children}</main>
