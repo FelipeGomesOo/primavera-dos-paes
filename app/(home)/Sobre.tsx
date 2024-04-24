@@ -1,3 +1,4 @@
+import Heading2 from "@/components/Heading2";
 import Image from "next/image";
 import Link from "next/link";
 export function SobreCard({
@@ -12,13 +13,13 @@ export function SobreCard({
   description: string;
 }) {
   return (
-    <section className="w-full md:w-6/12 lg:w-4/12 border-t-2 flex flex-row justify-between gap-4">
-      <div className="w-10/12 pt-4">
-        <h3>{title}</h3>
-        <p>{description}</p>
+    <section className="w-full lg:flex gap-6 mt-4 lg:border-t pt-4">
+      <div className="w-full lg:w-9/12">
+        <Image src={src} alt={alt} width={1200} height={300} />
       </div>
-      <div className="w-2/12">
-        <Image src={src} alt={alt} width={500} height={500} className="" />
+      <div className="w-full lg:w-6/12 lg:flex lg:flex-col justify-between ">
+        <h3 className="mt-4 lg:mt-0">{title}</h3>
+        <p>{description}</p>
       </div>
     </section>
   );
@@ -27,53 +28,107 @@ export function SobreCard({
 export default function Sobre() {
   return (
     <>
-      <section className="mb-16">
-        <div className="container mb-5 mt-8 md:mt-20">
-          <section className="md:border-t-4 pt-6 justify-between  md:pt-10 flex flex-col md:flex-row gap-4 mb-8">
-            <div className="w-full md:w-6/12 lg:w-6/12 ">
-              <h2>No que acreditamos</h2>
-            </div>
-            <div className="md:w-6/12 lg:w-5/12 ">
-              <p>
-                Fazemos pães de fermentação natural, brioches e biscoitos com
-                ingredientes orgânicos e nacionais. E vendemos a peso, da fatia
-                ao pão inteiro, leve o quanto quiser.
+      <section className="md:container  grid grid-cols-6 gap-2">
+        <Image
+          src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/vitrine.jpg"
+          alt="hero image"
+          width={1776}
+          height={999}
+          className="col-span-6  w-full"
+        />
+
+        <Image
+          src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/bolinho.jpg"
+          alt="hero image"
+          width={600}
+          height={750}
+          className="w-full col-span-2 "
+        />
+        <Image
+          src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/prateleira.jpg"
+          alt="hero image"
+          width={600}
+          height={750}
+          className="w-full col-span-2 "
+        />
+
+        <Image
+          src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/loja-laranjeiras.jpg"
+          alt="hero image"
+          width={600}
+          height={750}
+          className="w-full col-span-2 "
+        />
+        <section className="w-full col-span-5 md:col-span-3 ">
+          <div className="py-10 px-[1rem] md:px-0 ">
+            <p className=" text-lg lg:text-3xl">
+              "Tem que ser delicioso e não ter veneno. Temos que saber quem faz,
+              de onde vem e como é feito."
+            </p>
+            <p>Carta de valores da Junta Local</p>
+          </div>
+        </section>
+        <Image
+          src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/paes-na-mesa.jpg"
+          alt="hero image"
+          width={1776}
+          height={999}
+          className="col-span-6  w-full"
+        />
+      </section>
+      <section id="sobre">
+        <div className="container">
+          <section className="md:border-t-4 pt-4 md:pt-4 flex flex-col md:flex-row relative lg:gap-4 mb-10 ">
+            <div className="w-full md:w-6/12 lg:w-6/12 lg:sticky top-10 flex flex-col justify-between  lg:h-[90svh]">
+              <div className="text:lg md:text-3xl">
+                <p>
+                  "Primavera é mudança. Desde 2020, entramos nesse movimento
+                  através das texturas, aromas e sabores que agora são parte da
+                  vida e da mesa de muita gente.
+                </p>
+                <p>
+                  Nosso trabalho é afirmar que, além de justa e consciente, sua
+                  escolha também pode ser deliciosa."
+                </p>
+              </div>
+              <p className="mt-10 mb-10 lg:mb-0">
+                Eduardo Savino e Jualiana Padilha. <br /> Parceiros de todas as
+                primaveras.
               </p>
             </div>
-          </section>
-          <Image
-            src="https://primaveradospaes.com.br/wp-content/uploads/2021/06/cortes-paes-BX.jpg"
-            alt="hero image"
-            width={1200}
-            height={600}
-            className="w-full"
-          />
-        </div>
-        <section className="container mt-8 flex flex-col md:flex-row gap-8 mb-8">
-          <SobreCard
-            src="https://primaveradospaes.com.br/wp-content/uploads/2021/06/Icone-Materias-Primas.png"
-            alt="Matérias primas orgânicas"
-            title="Matérias primas orgânicas"
-            description="Utilização de matérias primas orgânicas, de cadeias sustentáveis e
+            <div className="w-full md:w-6/12">
+              <Image
+                src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/primavera-socios.jpg"
+                alt="hero image"
+                width={720}
+                height={1080}
+                className="w-full "
+              />
+              <h2 className="mt-10">
+                Três pilares que definem nosso trabalho:
+              </h2>
+
+              <SobreCard
+                src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/placeholder-primavera-dos-paes.gif"
+                alt="Matérias primas orgânicas"
+                title="Matérias primas orgânicas"
+                description="Utilização de matérias primas orgânicas, de cadeias sustentáveis e
             locais"
-          />
-          <SobreCard
-            src="https://primaveradospaes.com.br/wp-content/uploads/2021/06/Icone-Icone-Consumo-Responsa%CC%81vel.png"
-            alt="Consumo Responsável"
-            title="Consumo Responsável"
-            description="Liberdade de cada um em consumir o quanto precisa."
-          />
-          <SobreCard
-            src="https://primaveradospaes.com.br/wp-content/uploads/2021/06/Icone-Fermentacao-Natural.png"
-            alt="Fermentação Natural"
-            title="Fermentação Natural"
-            description="Processo natural, que valoriza sabores e contribui para um produto de maior qualidade e digestibilidade"
-          />
-        </section>
-        <div className="container">
-          <Link className="button medium w-full my-6" href="/sobre-nos">
-            Saiba mais sobre nós
-          </Link>
+              />
+              <SobreCard
+                src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/placeholder-primavera-dos-paes.gif"
+                alt="Consumo Responsável"
+                title="Consumo Responsável"
+                description="Liberdade de cada um em consumir o quanto precisa."
+              />
+              <SobreCard
+                src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/placeholder-primavera-dos-paes.gif"
+                alt="Fermentação Natural"
+                title="Fermentação Natural"
+                description="Processo natural, que valoriza sabores e contribui para um produto de maior qualidade e digestibilidade"
+              />
+            </div>
+          </section>
         </div>
       </section>
     </>
