@@ -43,15 +43,20 @@ const config: Config = {
       screens: {
         "3xl": "1792px",
       },
-      reveal: {
-        from: {
-          transform: "translateY(100%)",
-          opacity: "0",
+      keyframes: {
+        reveal: {
+          from: {
+            transform: "translateY(100%)",
+            opacity: "0",
+          },
+          to: {
+            transform: "translateY(0%)",
+            opacity: "1",
+          },
         },
-        to: {
-          transform: "translateY(0%)",
-          opacity: "1",
-        },
+      },
+      animation: {
+        reveal: "reveal  2s forwards cubic-bezier(0.165, 0.84, 0.44, 1)",
       },
     },
   },

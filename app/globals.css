@@ -45,6 +45,10 @@ html.lenis body {
   }
 }
 @layer components {
+  .reveal {
+    opacity: 0;
+    @apply animate-reveal;
+  }
   .button {
     @apply inline-block rounded border content-center text-center transition-all hover:bg-primary-dark hover:text-[white];
   }
