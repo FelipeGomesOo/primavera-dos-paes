@@ -1,12 +1,8 @@
 import Hero from "@/app/produtos/Hero";
-import EmptyPortfolio from "@/components/Portfolio/EmptyPortfolio";
-import FilterByCategory from "@/components/Portfolio/FilterByCategory";
-import FilterByTag from "@/components/Portfolio/FilterByTag";
 import Portfolio from "@/components/Portfolio/Portfolio";
-import PortfolioFilter from "@/components/Portfolio/PortfolioFilter";
+import { Suspense } from "react";
 import {
   getProductCategories,
-  getProductsAndFilters,
   getProductsByCategory,
   getSEO,
 } from "@/lib/data";
@@ -39,12 +35,8 @@ export async function generateMetadata(
 
 export default async function Categoria({
   params,
-  searchParams,
 }: {
   params: { category: string };
-  searchParams?: {
-    query?: string;
-  };
 }) {
   const products = await getProductsByCategory(params.category);
   const categories = await getProductCategories();
@@ -52,7 +44,9 @@ export default async function Categoria({
     <>
       <Hero>Nossos produtos</Hero>
       <section>
-        <Portfolio products={products} categories={categories} />
+        <Suspense fallback={<>...</>}>
+          <Portfolio products={products} categories={categories} />
+        </Suspense>
       </section>
     </>
   );

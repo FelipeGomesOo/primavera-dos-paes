@@ -1,14 +1,7 @@
 import Hero from "@/app/produtos/Hero";
 import Portfolio from "@/components/Portfolio/Portfolio";
-import {
-  getProductCategories,
-  getProducts,
-  getProductsAndFilters,
-} from "@/lib/data";
-import PortfolioFilter from "@/components/Portfolio/PortfolioFilter";
-import FilterByCategory from "@/components/Portfolio/FilterByCategory";
-import FilterByTag from "@/components/Portfolio/FilterByTag";
-import EmptyPortfolio from "@/components/Portfolio/EmptyPortfolio";
+import { Suspense } from "react";
+import { getProductCategories, getProducts } from "@/lib/data";
 
 import { Metadata } from "next";
 import { getSEO } from "@/lib/data";
@@ -40,7 +33,9 @@ export default async function Page() {
     <>
       <Hero>Nossos produtos</Hero>
       <section>
-        <Portfolio products={products} categories={categories} />
+        <Suspense fallback={<>...</>}>
+          <Portfolio products={products} categories={categories} />
+        </Suspense>
       </section>
     </>
   );
