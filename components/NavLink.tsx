@@ -15,19 +15,19 @@ export function NavLink({
   const pathname = usePathname();
   const active = () => {
     if (pathname === itemURL) {
-      return "active";
+      return "font-bold";
     } else if (pathname.startsWith(itemURL.slice(0, -1)) && itemURL !== "/") {
-      return "active";
+      return "font-bold";
     } else {
       return " ";
     }
   };
 
   return (
-    <>
+    <li>
       <Link onClick={onClick} className={`${active()} link `} href={itemURL}>
         {itemName}
       </Link>
-    </>
+    </li>
   );
 }

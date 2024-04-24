@@ -3,16 +3,20 @@ import MenuIcon from "@/components/MenuIcon";
 import MobileNavContent from "@/components/MobileNav/MobileNavContent";
 import { useState } from "react";
 
-export default function MobileNav() {
+export default function MobileNav({ menuItems }: any) {
   const [menuOpen, setMenuOpen] = useState(false);
   const handleClick = () => {
     setMenuOpen(!menuOpen);
   };
 
   return (
-    <nav className="lg:hidden">
+    <>
       <MenuIcon onClick={handleClick} menuOpen={menuOpen} />
-      <MobileNavContent onClose={handleClick} menuOpen={menuOpen} />
-    </nav>
+      <MobileNavContent
+        menuItems={menuItems}
+        onClose={handleClick}
+        menuOpen={menuOpen}
+      />
+    </>
   );
 }

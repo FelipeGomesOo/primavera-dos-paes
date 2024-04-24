@@ -61,8 +61,8 @@ export async function getMenuItems() {
     },
     {
       id: 2,
-      title: { rendered: "Sobre nós" },
-      url: "https://admin.primaveradospaes.com.br/sobre-nos",
+      title: { rendered: "Nossas lojas" },
+      url: "https://admin.primaveradospaes.com.br/#lojas",
     },
     {
       id: 3,
@@ -71,8 +71,8 @@ export async function getMenuItems() {
     },
     {
       id: 4,
-      title: { rendered: "Contato" },
-      url: "https://admin.primaveradospaes.com.br/contato",
+      title: { rendered: "Sobre" },
+      url: "https://admin.primaveradospaes.com.br/#sobre",
     },
   ];
 
@@ -523,4 +523,26 @@ export async function getSEO(slug: string, type: string) {
   };
   //console.log(page, "Page SEO Data.ts");
   return page;
+}
+
+export async function getFAQ() {
+  const data = await fetchAPIGraphql(`
+  query GetFAQ {
+    perguntasFrequentes {
+      nodes { 
+        id
+        title
+        content
+      }
+    }
+  }
+`);
+  const faqs = data.perguntasFrequentes.nodes.map((faq: any) => ({
+    id: faq.id,
+    title: faq.title,
+    content: faq.content,
+  }));
+
+  //console.log(faqs, "faqs Data.ts");
+  return faqs;
 }
