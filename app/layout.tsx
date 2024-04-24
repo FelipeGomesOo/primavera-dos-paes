@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getSEO } from "@/lib/data";
 import FloatingWhatsapp from "@/components/FloatingWhatsapp";
-
+import { GoogleTagManager } from "@next/third-parties/google";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -60,6 +60,7 @@ export default function RootLayout({
       lang="pt-br"
       className={`min-h-full ${courier.variable} ${poppins.variable} `}
     >
+      <GoogleTagManager gtmId="GTM-NGZXTL2Z" />
       <body className="flex flex-col min-h-svh ">
         <FloatingWhatsapp />
         <Header className="flex-none" />
