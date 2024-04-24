@@ -1,14 +1,20 @@
 import "@/app/globals.css";
-import { Poppins } from "next/font/google";
+import { Courier_Prime, Poppins } from "next/font/google";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getSEO } from "@/lib/data";
+import FloatingWhatsapp from "@/components/FloatingWhatsapp";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-poppins",
+});
+const courier = Courier_Prime({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-courier-prime",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -50,8 +56,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br" className={`min-h-full ${poppins.variable}`}>
+    <html
+      lang="pt-br"
+      className={`min-h-full ${courier.variable} ${poppins.variable} `}
+    >
       <body className="flex flex-col min-h-svh ">
+        <FloatingWhatsapp />
         <Header className="flex-none" />
         <main className="grow">{children}</main>
         <Footer className="flex-none" />
