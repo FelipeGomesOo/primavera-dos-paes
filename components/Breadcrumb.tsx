@@ -5,7 +5,7 @@ export default function Breadcrumb({
 }: {
   category: ProductCategory;
 }) {
-  console.log(category, "category breadcrumb");
+  //console.log(category, "category breadcrumb");
   return (
     <nav className="flex gap-x-2">
       <Link href={`/produtos`}>Produtos ›</Link>
