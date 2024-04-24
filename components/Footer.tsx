@@ -1,26 +1,55 @@
 import Link from "next/link";
 import Logo from "@/components/Logo";
-export default function Footer({ className }: { className: string }) {
+import { getFAQ } from "@/lib/data";
+import { dangerouslySetInnerHTML } from "react";
+import AccordionItem from "./AccordionItem";
+import Accordion from "./Accordion/Accordion";
+import LogoLetras from "./LogoLetras";
+export default async function Footer({ className }: { className: string }) {
+  const FAQ = await getFAQ();
   return (
-    <footer className={`py-8  bg-primary-dark text-[#fff]  ${className}`}>
-      <section className="container flex flex-col lg:flex-row gap-2 justify-between ">
-        <div className="">
-          <p>
-            Primavera dos Pães: Rua Ipiranga, 51 | Laranjeiras | De terça a
-            sábado
-          </p>
-        </div>
-        <div className="flex gap-4">
-          <Link href={"https://www.facebook.com/primaveradospaes/"}>
-            Facebook
-          </Link>
-          <Link href={"https://www.instagram.com/primaveradospaes/"}>
-            Instagram
-          </Link>
-          <Link href={"https://api.whatsapp.com/send?phone=+5521992220003"}>
-            Whatsapp
-          </Link>
-        </div>
+    <footer className={` bg-primary-light/10   ${className}`}>
+      <section className="container min-h-[100svh] py-10 flex flex-col gap-10 ">
+        <section className="w-full h-[10svh] lg:h-[30svh]  md:border-t-4 pt-4 md:pt-4">
+          <div className="lg:w-6/12">
+            <h2>Fale conosco</h2>
+          </div>
+        </section>
+        <section className="lg:flex w-full gap-4   justify-between  ">
+          <div className="lg:w-6/12 mb-6">
+            <h4 className="border-b pb-4 mb-4">Nossos contatos:</h4>
+            <div className="md:text-lg">
+              <p>
+                contato@primaveradospaes.com.br <br /> +55 21 99222.0003
+              </p>
+            </div>
+          </div>
+          <div className="lg:w-6/12">
+            <h4 className="border-b pb-4">Perguntas frequentes:</h4>
+            <Accordion faqs={FAQ} />
+          </div>
+        </section>
+        <section className="flex  flex-col-reverse md:flex-row gap-6 md:gap-4 justify-between border-t-4 mt-auto pt-2">
+          <div className="lg:w-6/12">
+            <LogoLetras className="fill-primary-dark w-[7rem]" />
+          </div>
+          <div className="lg:flex justify-between lg:w-6/12">
+            <div className=" flex gap-4 ">
+              <Link
+                className="block"
+                href={"https://www.facebook.com/primaveradospaes/"}
+              >
+                Facebook
+              </Link>
+              <Link
+                className="block"
+                href={"https://www.instagram.com/primaveradospaes/"}
+              >
+                Instagram
+              </Link>
+            </div>
+          </div>
+        </section>
       </section>
     </footer>
   );

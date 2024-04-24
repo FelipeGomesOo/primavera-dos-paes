@@ -72,3 +72,8 @@ interface Store {
   SaturdayHours: string;
   MapsLink: { title: string; url: string };
 }
+interface FAQ {
+  id: string;
+  title: string;
+  content: string;
+}
