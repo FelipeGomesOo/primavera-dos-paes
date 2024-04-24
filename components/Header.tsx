@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Logo from "@/components/Logo";
+import Logo from "@/components/SVG/Logo";
 import MobileNav from "./MobileNav/MobileNav";
 import { getMenuItems } from "@/lib/data";
 export default async function Header({ className }: { className: string }) {

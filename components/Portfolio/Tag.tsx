@@ -3,7 +3,7 @@ import { useSearchParams } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import CheckIcon from "../CheckIon";
+import CheckIcon from "../SVG/CheckIon";
 export default function Tag({
   tagName,
   tagSlug,

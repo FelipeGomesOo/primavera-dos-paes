@@ -1,10 +1,10 @@
 import Link from "next/link";
-import Logo from "@/components/Logo";
+import Logo from "@/components/SVG/Logo";
 import { getFAQ } from "@/lib/data";
 import { dangerouslySetInnerHTML } from "react";
 import AccordionItem from "./Accordion/AccordionItem";
 import Accordion from "./Accordion/Accordion";
-import LogoLetras from "./LogoLetras";
+import LogoLetras from "./SVG/LogoLetras";
 export default async function Footer({ className }: { className: string }) {
   const FAQ = await getFAQ();
   return (

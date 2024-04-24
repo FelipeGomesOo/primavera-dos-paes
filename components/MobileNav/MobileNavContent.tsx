@@ -1,8 +1,8 @@
-import MenuIcon from "@/components/MenuIcon";
-import Logo from "@/components/Logo";
+import MenuIcon from "@/components/SVG/MenuIcon";
+import Logo from "@/components/SVG/Logo";
 import Link from "next/link";
 import NavMenu from "@/components/NavMenu";
-import LogoIcon from "../LogoIcon";
+import LogoIcon from "../SVG/LogoIcon";
 
 export default function ModalContent({ onClose, menuOpen, menuItems }: any) {
   return (

@@ -1,5 +1,5 @@
 "use client";
-import MenuIcon from "@/components/MenuIcon";
+import MenuIcon from "@/components/SVG/MenuIcon";
 import MobileNavContent from "@/components/MobileNav/MobileNavContent";
 import { useState } from "react";
 
