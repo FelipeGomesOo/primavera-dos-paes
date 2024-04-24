@@ -11,9 +11,9 @@ const config: Config = {
       padding: {
         DEFAULT: "1rem",
         sm: "2rem",
-        lg: "2rem",
-        xl: "2rem",
-        "2xl": "2rem",
+        lg: "4rem",
+        xl: "4rem",
+        "2xl": "4rem",
       },
     },
 
@@ -25,7 +25,7 @@ const config: Config = {
       xl: "1.3125rem", // 21px
       "2xl": "1.5rem", // 24px
       "3xl": "1.75rem", // 28px
-      "4xl": "2.5rem", // 40px
+      "4xl": "2.75rem", // 40px
       "5xl": "4.5rem", // 72px
     },
     colors: {
@@ -38,7 +38,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-poppins)"],
-        mono: "Courier, monospace",
+        mono: ["var(--font-courier-prime)"],
       },
       screens: {
         "3xl": "1792px",
