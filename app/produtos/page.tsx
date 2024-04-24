@@ -42,13 +42,16 @@ export default async function Page({
   return (
     <>
       <Hero>Nossos produtos</Hero>
+
       <PortfolioFilter>
         <FilterByCategory />
         <FilterByTag tags={tagButtons} />
       </PortfolioFilter>
-      <Portfolio products={filteredProducts}>
-        <EmptyPortfolio products={filteredProducts} />
-      </Portfolio>
+      <section className="container mt-10">
+        <Portfolio products={filteredProducts}>
+          <EmptyPortfolio products={filteredProducts} />
+        </Portfolio>
+      </section>
     </>
   );
 }

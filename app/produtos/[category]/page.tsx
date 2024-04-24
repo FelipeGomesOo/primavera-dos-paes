@@ -58,12 +58,14 @@ export default async function Categoria({
         <FilterByCategory />
         <FilterByTag tags={tagButtons} />
       </PortfolioFilter>
-      <Portfolio products={filteredProducts}>
-        <EmptyPortfolio
-          products={filteredProducts}
-          category={params.category}
-        />
-      </Portfolio>
+      <section className="container my-10">
+        <Portfolio products={filteredProducts}>
+          <EmptyPortfolio
+            products={filteredProducts}
+            category={params.category}
+          />
+        </Portfolio>
+      </section>
     </>
   );
 }

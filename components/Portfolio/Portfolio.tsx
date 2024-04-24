@@ -8,7 +8,7 @@ export default async function Portfolio({
 }) {
   return (
     <>
-      <section className="container grid grid-cols-12  gap-4 gap-y-8 py-6 ">
+      <section className="grid grid-cols-12  gap-4 gap-y-8">
         {products.map((product: ProductCard, index: number) => (
           <ProductCard key={index} product={product} />
         ))}
