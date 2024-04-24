@@ -47,24 +47,12 @@ export default async function Categoria({
   };
 }) {
   const products = await getProductsByCategory(params.category);
-  const { filteredProducts, tagButtons } = await getProductsAndFilters(
-    searchParams,
-    products
-  );
+  const categories = await getProductCategories();
   return (
     <>
       <Hero>Nossos produtos</Hero>
-      <PortfolioFilter>
-        <FilterByCategory />
-        <FilterByTag tags={tagButtons} />
-      </PortfolioFilter>
-      <section className="container my-10">
-        <Portfolio products={filteredProducts}>
-          <EmptyPortfolio
-            products={filteredProducts}
-            category={params.category}
-          />
-        </Portfolio>
+      <section>
+        <Portfolio products={products} categories={categories} />
       </section>
     </>
   );

@@ -1,6 +1,10 @@
 import Hero from "@/app/produtos/Hero";
 import Portfolio from "@/components/Portfolio/Portfolio";
-import { getProducts, getProductsAndFilters } from "@/lib/data";
+import {
+  getProductCategories,
+  getProducts,
+  getProductsAndFilters,
+} from "@/lib/data";
 import PortfolioFilter from "@/components/Portfolio/PortfolioFilter";
 import FilterByCategory from "@/components/Portfolio/FilterByCategory";
 import FilterByTag from "@/components/Portfolio/FilterByTag";
@@ -29,28 +33,14 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: {
-    query: string;
-  };
-}) {
+export default async function Page() {
   const products = await getProducts();
-  const { tagFilters, filteredProducts, tagButtons } =
-    await getProductsAndFilters(searchParams, products);
+  const categories = await getProductCategories();
   return (
     <>
       <Hero>Nossos produtos</Hero>
-
-      <PortfolioFilter>
-        <FilterByCategory />
-        <FilterByTag tags={tagButtons} />
-      </PortfolioFilter>
-      <section className="container mt-10">
-        <Portfolio products={filteredProducts}>
-          <EmptyPortfolio products={filteredProducts} />
-        </Portfolio>
+      <section>
+        <Portfolio products={products} categories={categories} />
       </section>
     </>
   );

@@ -13,7 +13,7 @@ export default function Category({
   const searchParams = useSearchParams();
   let params = new URLSearchParams(searchParams);
   return (
-    <div className="snap-start shrink-0 first:pl-6 first:lg:pl-0 last:pr-[calc(100%-21.5rem)]">
+    <div className="snap-start shrink-0 first:pl-4 first:lg:pl-0 last:pr-[calc(100%-21.5rem)]">
       <Link
         href={categoryURL + "?" + params.toString()}
         className={`link  ${pathname === categoryURL ? "active" : " "}`}

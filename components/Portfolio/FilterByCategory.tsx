@@ -1,22 +1,19 @@
+"use client";
 import Category from "@/components/Portfolio/Category";
-import { getProductCategories } from "@/lib/data";
-import { Suspense } from "react";
-export default async function FilterByCategory() {
-  const categories = await getProductCategories();
-
+export default function FilterByCategory({
+  categories,
+}: {
+  categories: ProductCategory[];
+}) {
   return (
     <>
-      <Suspense fallback={<>Categoria...</>}>
-        <Category categoryName="Todos" categoryURL="/produtos" />
-      </Suspense>
+      <Category categoryName="Todos" categoryURL="/produtos" />
       {categories.map((category: any, index: number) => (
-        <Suspense key={index} fallback={<>Categoria...</>}>
-          <Category
-            key={index}
-            categoryName={category.name}
-            categoryURL={`/produtos/${category.slug}`}
-          />
-        </Suspense>
+        <Category
+          key={index}
+          categoryName={category.name}
+          categoryURL={`/produtos/${category.slug}`}
+        />
       ))}
     </>
   );

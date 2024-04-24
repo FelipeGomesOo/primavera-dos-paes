@@ -29,6 +29,7 @@ export default function Tag({
   return (
     <div className="snap-start shrink-0 first:pl-6 last:pr-[calc(100%-21.5rem)]">
       <button
+        role="switch"
         aria-checked={tag === "ativo" ? true : false}
         className=" rounded-full border-primary-light/50 button small aria-checked:bg-primary-dark aria-checked:text-[#ebe5e5]  group"
         onClick={handleClick}

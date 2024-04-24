@@ -62,8 +62,8 @@ export default function Sobre() {
         <section className="w-full col-span-5 md:col-span-3 fade-in">
           <div className="py-10 px-[1rem] md:px-0 ">
             <p className=" text-lg lg:text-3xl">
-              "Tem que ser delicioso e não ter veneno. Temos que saber quem faz,
-              de onde vem e como é feito."
+              &quot;Tem que ser delicioso e não ter veneno. Temos que saber quem
+              faz, de onde vem e como é feito.&quot;
             </p>
             <p>Carta de valores da Junta Local</p>
           </div>
@@ -82,13 +82,13 @@ export default function Sobre() {
             <div className="w-full md:w-6/12 lg:w-6/12 lg:sticky top-10 flex flex-col justify-between  lg:h-[90svh]">
               <div className="text:lg md:text-3xl fade-in">
                 <p>
-                  "Primavera é mudança. Desde 2020, entramos nesse movimento
-                  através das texturas, aromas e sabores que agora são parte da
-                  vida e da mesa de muita gente.
+                  &quot;Primavera é mudança. Desde 2020, entramos nesse
+                  movimento através das texturas, aromas e sabores que agora são
+                  parte da vida e da mesa de muita gente.
                 </p>
                 <p>
                   Nosso trabalho é afirmar que, além de justa e consciente, sua
-                  escolha também pode ser deliciosa."
+                  escolha também pode ser deliciosa.&quot;
                 </p>
               </div>
               <p className="mt-10 mb-10 lg:mb-0 fade-in">

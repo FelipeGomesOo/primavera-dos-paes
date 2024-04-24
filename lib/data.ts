@@ -362,11 +362,10 @@ export function getTagsfromProducts(products: ProductCard[]) {
   });
   return tags;
 }
-export async function getProductsAndFilters(
-  searchParams: any,
-  products: ProductCard[]
+export function getProductsAndFilters(
+  products: ProductCard[],
+  tagFilters: any
 ) {
-  const tagFilters: any = Object.keys(searchParams);
   const filteredProducts = filterProductsByTag(products, tagFilters);
   const tagButtons = getTagsfromProducts(filteredProducts);
   return { filteredProducts, tagButtons, tagFilters };
@@ -524,7 +523,6 @@ export async function getSEO(slug: string, type: string) {
   //console.log(page, "Page SEO Data.ts");
   return page;
 }
-
 export async function getFAQ() {
   const data = await fetchAPIGraphql(`
   query GetFAQ {
