@@ -18,6 +18,8 @@ export default function ProductCard({
           alt={title}
           width={1200}
           height={600}
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
         />
         <h4 className="mt-2">{title}</h4>
         <p>{excerpt}</p>

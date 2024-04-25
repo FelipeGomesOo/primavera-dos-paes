@@ -35,6 +35,9 @@ export default function Sobre() {
           width={1776}
           height={999}
           className="col-span-6  w-full fade-in"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
+          sizes="100vw"
         />
 
         <Image
@@ -43,6 +46,9 @@ export default function Sobre() {
           width={600}
           height={750}
           className="w-full col-span-2 fade-in"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
+          sizes="100vw"
         />
         <Image
           src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/prateleira.jpg"
@@ -50,6 +56,9 @@ export default function Sobre() {
           width={600}
           height={750}
           className="w-full col-span-2 fade-in"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
+          sizes="100vw"
         />
 
         <Image
@@ -58,6 +67,9 @@ export default function Sobre() {
           width={600}
           height={750}
           className="w-full col-span-2 fade-in"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
+          sizes="100vw"
         />
         <section className="w-full col-span-5 md:col-span-3 fade-in">
           <div className="py-10 px-[1rem] md:px-0 ">
@@ -74,6 +86,9 @@ export default function Sobre() {
           width={1776}
           height={999}
           className="col-span-6  w-full fade-in"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
+          sizes="100vw"
         />
       </section>
       <section id="sobre">
@@ -103,6 +118,9 @@ export default function Sobre() {
                 width={720}
                 height={1080}
                 className="w-full fade-in"
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
+                sizes="100vw"
               />
               <h2 className="mt-10 fade-in">
                 Três pilares que definem nosso trabalho:

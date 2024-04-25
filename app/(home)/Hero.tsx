@@ -16,7 +16,11 @@ export default function Hero() {
           alt="hero image"
           width={1776}
           height={999}
-          className="col-span-6  w-full "
+          className="col-span-6 w-full"
+          priority
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
+          sizes="100vw"
         />
 
         <Image
@@ -24,7 +28,10 @@ export default function Hero() {
           alt="hero image"
           width={600}
           height={750}
-          className="w-full col-span-2 fade-in "
+          className="w-full col-span-2 fade-in"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
+          sizes="100vw"
         />
         <Image
           src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/pao-mordido.jpg"
@@ -32,6 +39,9 @@ export default function Hero() {
           width={600}
           height={750}
           className="w-full col-span-2 fade-in"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
+          sizes="100vw"
         />
 
         <Image
@@ -40,6 +50,9 @@ export default function Hero() {
           width={600}
           height={750}
           className="w-full col-span-2 fade-in"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
+          sizes="100vw"
         />
         <section className="lg:col-start-4 lg:col-span-3 col-span-6 ">
           <p className="py-10 lg:text-3xl px-[1rem] lg:px-0 fade-in">
@@ -53,6 +66,9 @@ export default function Hero() {
           width={1776}
           height={999}
           className="w-full col-span-6 fade-in"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
+          sizes="100vw"
         />
       </section>
     </section>
