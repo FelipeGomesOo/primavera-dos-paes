@@ -37,7 +37,7 @@ export default function Sobre() {
           className="col-span-6  w-full fade-in"
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
-          sizes="100vw"
+          sizes="80vw"
         />
 
         <Image
@@ -48,7 +48,7 @@ export default function Sobre() {
           className="w-full col-span-2 fade-in"
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
-          sizes="100vw"
+          sizes="33vw"
         />
         <Image
           src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/prateleira.jpg"
@@ -58,7 +58,7 @@ export default function Sobre() {
           className="w-full col-span-2 fade-in"
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
-          sizes="100vw"
+          sizes="33vw"
         />
 
         <Image
@@ -69,9 +69,9 @@ export default function Sobre() {
           className="w-full col-span-2 fade-in"
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
-          sizes="100vw"
+          sizes="33vw"
         />
-        <section className="w-full col-span-5 md:col-span-3 fade-in">
+        <section className="w-full col-span-6 md:col-span-3 fade-in">
           <div className="py-10 px-[1rem] md:px-0 ">
             <p className=" text-lg lg:text-3xl">
               &quot;Tem que ser delicioso e não ter veneno. Temos que saber quem
@@ -88,14 +88,14 @@ export default function Sobre() {
           className="col-span-6  w-full fade-in"
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
-          sizes="100vw"
+          sizes="80vw"
         />
       </section>
       <section id="sobre">
         <div className="container">
           <section className="md:border-t-4 pt-4 md:pt-4 flex flex-col md:flex-row relative lg:gap-4 mb-10 ">
             <div className="w-full md:w-6/12 lg:w-6/12 lg:sticky top-10 flex flex-col justify-between  lg:h-[90svh]">
-              <div className="text:lg md:text-3xl fade-in">
+              <div className="text-lg md:text-3xl fade-in">
                 <p>
                   &quot;Primavera é mudança. Desde 2020, entramos nesse
                   movimento através das texturas, aromas e sabores que agora são

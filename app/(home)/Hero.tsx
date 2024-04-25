@@ -1,16 +1,15 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
     <section>
-      <section className="container flex flex-col md:flex-row gap-4 items-end justify-between ">
-        <div className="w-full md:w-6/12 ">
-          <h1 className="fade-out-down mb-0 ">
-            Padaria artesanal orgânica no Rio.
-          </h1>
-        </div>
-      </section>
-      <section className="md:container pt-10 grid grid-cols-6 gap-2">
+      <div className="container">
+        <h1 className="mb-0 lg:w-9/12 2xl:w-6/12 3xl:w-9/12">
+          Padaria artesanal orgânica no Rio.
+        </h1>
+      </div>
+      <section className="md:container pt-6 md:pt-10 grid grid-cols-6 gap-2">
         <Image
           src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/primavera-cesta-de-paes.jpg"
           alt="hero image"
@@ -20,7 +19,7 @@ export default function Hero() {
           priority
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
-          sizes="100vw"
+          sizes="90vw"
         />
 
         <Image
@@ -31,7 +30,7 @@ export default function Hero() {
           className="w-full col-span-2 fade-in"
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
-          sizes="100vw"
+          sizes="33vw"
         />
         <Image
           src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/pao-mordido.jpg"
@@ -41,7 +40,7 @@ export default function Hero() {
           className="w-full col-span-2 fade-in"
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
-          sizes="100vw"
+          sizes="33vw"
         />
 
         <Image
@@ -52,13 +51,16 @@ export default function Hero() {
           className="w-full col-span-2 fade-in"
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
-          sizes="100vw"
+          sizes="33vw"
         />
-        <section className="lg:col-start-4 lg:col-span-3 col-span-6 ">
-          <p className="py-10 lg:text-3xl px-[1rem] lg:px-0 fade-in">
+        <section className="lg:col-span-5 xl:col-start-4 xl:col-span-3 col-span-6 px-[1rem] md:px-0 fade-in py-10">
+          <p className=" text-base md:text-3xl mb-4">
             Todos os dias escolhemos produzir comida de verdade com as mãos, com
             matéria-prima orgânica certificada e deliciosa.
           </p>
+          <Link href="/produtos" className="button small">
+            Conheça nossos produtos
+          </Link>
         </section>
         <Image
           src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/balcao-cliente-feliz.jpg"
@@ -68,7 +70,7 @@ export default function Hero() {
           className="w-full col-span-6 fade-in"
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
-          sizes="100vw"
+          sizes="90vw"
         />
       </section>
     </section>

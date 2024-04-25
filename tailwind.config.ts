@@ -10,8 +10,9 @@ const config: Config = {
       center: true,
       padding: {
         DEFAULT: "1rem",
-        sm: "2rem",
-        lg: "4rem",
+        sm: "1rem",
+        md: "1.5rem",
+        lg: "1.5rem",
         xl: "4rem",
         "2xl": "4rem",
       },
@@ -27,6 +28,7 @@ const config: Config = {
       "3xl": "1.75rem", // 28px
       "4xl": "2.75rem", // 40px
       "5xl": "4.5rem", // 72px
+      "6xl": "5.75rem", // 72px
     },
     colors: {
       primary: {

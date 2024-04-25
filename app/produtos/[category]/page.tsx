@@ -7,6 +7,7 @@ import {
   getSEO,
 } from "@/lib/data";
 import { Metadata, ResolvingMetadata } from "next";
+import PortfolioSkeleton from "@/components/PortfolioSkeleton";
 type Props = {
   params: { category: string };
 };
@@ -44,7 +45,7 @@ export default async function Categoria({
     <>
       <Hero>Nossos produtos</Hero>
       <section>
-        <Suspense fallback={<>...</>}>
+        <Suspense fallback={<PortfolioSkeleton />}>
           <Portfolio products={products} categories={categories} />
         </Suspense>
       </section>

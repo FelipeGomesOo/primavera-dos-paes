@@ -32,7 +32,7 @@ export default function Portfolio({
           <FilterByTag tags={tagButtons} />
         </PortfolioFilter>
       )}
-      <section className="grid grid-cols-12  gap-4 gap-y-8 reveal container">
+      <section className="grid grid-cols-12 gap-2 xl:gap-4 gap-y-8 reveal container">
         {filteredProducts.map((product: ProductCard, index: number) => (
           <ProductCard key={index} product={product} index={index} />
         ))}

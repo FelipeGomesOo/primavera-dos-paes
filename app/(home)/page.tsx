@@ -5,7 +5,7 @@ import Sobre from "./Sobre";
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-10 lg:gap-20 reveal">
+    <div className="flex flex-col gap-[10svh] lg:gap-20 reveal">
       <Hero />
       <Lojas />
       <Produtos />

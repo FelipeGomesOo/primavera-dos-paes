@@ -387,12 +387,7 @@ export async function getStores() {
         slug
         featuredImage {
             node {
-              mediaDetails {
-                sizes {
-                  sourceUrl
-                  width
-                  height
-                }
+              mediaDetails {                 
                 height
                 width
               }
@@ -400,6 +395,15 @@ export async function getStores() {
             }
           }
         camposDeLojas {
+          fotoDaLoja {
+             node {
+              mediaDetails {                 
+                height
+                width
+              }
+              mediaItemUrl
+            }
+          }
           bairro
           telefone
           logradouro
@@ -416,7 +420,6 @@ export async function getStores() {
       }
     }
   }
-  
     `);
 
   const stores = data.lojas.nodes.map((s: any) => {
@@ -424,26 +427,20 @@ export async function getStores() {
       id: s.id,
       slug: s.slug,
       title: s.title,
-      featuredImage: {
-        large: {
+      featuredImage: [
+        {
           src: s.featuredImage.node.mediaItemUrl,
           alt: s.title,
           width: s.featuredImage.node.mediaDetails.width,
           height: s.featuredImage.node.mediaDetails.height,
         },
-        small: {
-          src: s.featuredImage.node.mediaDetails.sizes[0].sourceUrl,
+        s.camposDeLojas.fotoDaLoja?.node.mediaItemUrl && {
+          src: s.camposDeLojas.fotoDaLoja.node.mediaItemUrl,
           alt: s.title,
-          width: s.featuredImage.node.mediaDetails.sizes[0].width,
-          height: s.featuredImage.node.mediaDetails.sizes[0].height,
+          width: s.camposDeLojas.fotoDaLoja.node.mediaDetails.width,
+          height: s.camposDeLojas.fotoDaLoja.node.mediaDetails.height,
         },
-        thumb: {
-          src: s.featuredImage.node.mediaDetails.sizes[1].sourceUrl,
-          alt: s.title,
-          width: s.featuredImage.node.mediaDetails.sizes[1].width,
-          height: s.featuredImage.node.mediaDetails.sizes[1].height,
-        },
-      },
+      ],
       Logradouro: s.camposDeLojas.logradouro,
       Bairro: s.camposDeLojas.bairro,
       Telefone: s.camposDeLojas.telefone,

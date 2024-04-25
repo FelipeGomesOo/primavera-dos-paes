@@ -3,14 +3,10 @@ import Image from "next/image";
 import BadgeCloud from "@/components/BadgeCloud";
 import Ingredients from "./Ingredientes";
 import Conservation from "./Conservation";
-import Link from "next/link";
-import Stores from "@/components/Stores/Stores";
 import Breadcrumb from "@/components/Breadcrumb";
 import Description from "./Description";
 import CTA from "./CTA";
-import { Suspense } from "react";
 import When from "./When";
-import StoreCard from "@/components/Stores/Store";
 import { Metadata, ResolvingMetadata } from "next";
 import Lojas from "./Lojas";
 type Props = {
@@ -50,7 +46,7 @@ export default async function Produto({
   return (
     <>
       <div className="container flex flex-col lg:flex-row gap-8 mb-12 justify-between reveal">
-        <div className="w-full lg:w-7/12 flex-none">
+        <div className="w-full lg:w-8/12 xl:w-7/12 flex-none">
           <Breadcrumb category={product.category} />
 
           <h1 className="mt-2">{product.title}</h1>

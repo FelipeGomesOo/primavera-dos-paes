@@ -6,15 +6,13 @@ export default async function Footer({ className }: { className: string }) {
   const FAQ = await getFAQ();
   return (
     <footer className={` bg-primary-light/10 fade-in  ${className}`}>
-      <section className="container min-h-[100svh] py-10 flex flex-col gap-10 ">
-        <section className="w-full h-[10svh] lg:h-[30svh]  md:border-t-4 pt-4 md:pt-4">
-          <div className="lg:w-6/12">
-            <h2>Fale conosco</h2>
-          </div>
+      <section className="container min-h-[105svh] lg:min-h-[100svh] py-10 flex flex-col gap-10 ">
+        <section className="w-full h-[20svh] grow lg:h-[30svh]  border-t-4 pt-4 md:pt-4">
+          <h2>Fale conosco</h2>
         </section>
         <section className="lg:flex w-full gap-4 justify-between  fade-in">
           <div className="lg:w-6/12 mb-6">
-            <h4 className="border-b pb-4 mb-4">Nossos contatos:</h4>
+            <h4 className="lg:border-b lg:pb-4 lg:mb-4">Nossos contatos:</h4>
             <div className="md:text-lg">
               <p>
                 contato@primaveradospaes.com.br <br /> +55 21 99222.0003

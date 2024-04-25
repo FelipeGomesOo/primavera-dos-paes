@@ -60,11 +60,7 @@ interface Store {
   id: string;
   slug: string;
   title: string;
-  featuredImage: {
-    large: FaturedImage;
-    small: FaturedImage;
-    thumb: FaturedImage;
-  };
+  featuredImage: FaturedImage[];
   Logradouro: string;
   Bairro: string;
   Telefone: string;
