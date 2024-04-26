@@ -1,8 +1,12 @@
 import { revalidatePath } from "next/cache";
+import { headers } from "next/headers";
 import { NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {
-  const token = request.headers.get("Authorization");
+  const headersList = headers();
+  const authorization = headersList.get("Authorization");
+  const token = (authorization || "").split("Bearer ")[1];
+
   if (token !== process.env.API_TOKEN) {
     return Response.json({ error: "Token inválido" });
   }
