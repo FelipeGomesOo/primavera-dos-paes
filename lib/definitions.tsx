@@ -60,6 +60,7 @@ interface Store {
   id: string;
   slug: string;
   title: string;
+  subtitle: string;
   featuredImage: FaturedImage[];
   Logradouro: string;
   Bairro: string;

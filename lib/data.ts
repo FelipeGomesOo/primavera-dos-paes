@@ -633,6 +633,7 @@ export async function getStores() {
               mediaItemUrl
             }
           }
+          subtitulo
           bairro
           telefone
           logradouro
@@ -659,6 +660,7 @@ export async function getStores() {
       id: s.id,
       slug: s.slug,
       title: s.title,
+      subtitle: s.camposDeLojas.subtitulo,
       featuredImage: [
         {
           src: s.featuredImage.node.mediaItemUrl,
@@ -831,6 +833,17 @@ export async function getHomePage() {
           }
         }
         home {
+          lojas{
+            titulo
+            entregas{
+              titulo
+              descricao
+            }
+            botao{
+              link
+              titulo
+            }
+          }
           nossosProdutos {
             titulo
             subtitulo
@@ -1048,6 +1061,17 @@ export async function getHomePage() {
       ],
       fraseImpactante: p.home.hero.fraseImpactante,
       imagenzona: getImg(p.home.hero.imagenzona),
+    },
+    lojas: {
+      titulo: p.home.lojas.titulo,
+      entregas: {
+        titulo: p.home.lojas.entregas.titulo,
+        descricao: p.home.lojas.entregas.descricao,
+      },
+      botao: {
+        link: p.home.lojas.botao.link,
+        titulo: p.home.lojas.botao.titulo,
+      },
     },
     nossosProdutos: {
       titulo: p.home.nossosProdutos.titulo,
