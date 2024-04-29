@@ -101,7 +101,10 @@ export default async function Sobre() {
               />
               <h2 className="mt-10 fade-in">{sobre.titulo}</h2>
               {sobre.pilares.map((pilar, index) => (
-                <div className="w-full lg:flex gap-6 mt-4 lg:border-t pt-4 fae-in">
+                <div
+                  key={index}
+                  className="w-full lg:flex gap-6 mt-4 lg:border-t pt-4 fade-in"
+                >
                   <div className="w-full lg:w-9/12">
                     <Image
                       src={pilar.imagem.src}
