@@ -1,4 +1,4 @@
-import Stores from "./Stores";
+import StoresGallery from "./StoresGallery";
 import { getStores } from "@/lib/data";
 import Link from "next/link";
 import Store from "./Store";
@@ -13,7 +13,7 @@ export default async function Lojas() {
             <div className="flex flex-col gap-6">
               <div className="lg:hidden overflow-scroll">
                 <div className="mt-6 w-full flex gap-2">
-                  <Stores stores={stores} />
+                  <StoresGallery stores={stores} />
                 </div>
               </div>
               <div className="text-sm md:text-base xl:pr-10">
@@ -47,7 +47,7 @@ export default async function Lojas() {
             </div>
           </div>
           <div className="lg:w-6/12 hidden lg:block">
-            <Stores stores={stores} />
+            <StoresGallery stores={stores} />
           </div>
         </section>
       </div>

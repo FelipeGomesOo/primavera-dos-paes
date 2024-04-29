@@ -3,7 +3,7 @@ import { Courier_Prime, Poppins } from "next/font/google";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { getSEO } from "@/lib/data";
+import { getHomePage } from "@/lib/data";
 import FloatingWhatsapp from "@/components/FloatingWhatsapp";
 import { GoogleTagManager } from "@next/third-parties/google";
 const poppins = Poppins({
@@ -18,7 +18,7 @@ const courier = Courier_Prime({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { seoDescription, seoTitle, ogImage } = await getSEO("/", "page");
+  const { seoDescription, seoTitle, ogImage } = await getHomePage();
   return {
     title: {
       template: `%s | ${seoTitle}`,

@@ -1,6 +1,6 @@
-import Heading2 from "@/components/Heading2";
+import { getHomePage } from "@/lib/data";
 import Image from "next/image";
-import Link from "next/link";
+
 export function SobreCard({
   src,
   alt,
@@ -25,69 +25,53 @@ export function SobreCard({
   );
 }
 
-export default function Sobre() {
+export default async function Sobre() {
+  const { interludio, sobre } = await getHomePage();
+  const dataBlur =
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII=";
   return (
     <>
       <section className="md:container  grid grid-cols-6 gap-2">
         <Image
-          src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/vitrine.jpg"
-          alt="hero image"
-          width={1776}
-          height={999}
-          className="col-span-6  w-full fade-in"
+          src={interludio.mainImage.src}
+          alt={interludio.mainImage.alt}
+          width={interludio.mainImage.width}
+          height={interludio.mainImage.height}
+          className="col-span-6 w-full"
           placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
+          blurDataURL={dataBlur}
           sizes="80vw"
         />
 
-        <Image
-          src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/bolinho.jpg"
-          alt="hero image"
-          width={600}
-          height={750}
-          className="w-full col-span-2 fade-in"
-          placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
-          sizes="33vw"
-        />
-        <Image
-          src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/prateleira.jpg"
-          alt="hero image"
-          width={600}
-          height={750}
-          className="w-full col-span-2 fade-in"
-          placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
-          sizes="33vw"
-        />
-
-        <Image
-          src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/loja-laranjeiras.jpg"
-          alt="hero image"
-          width={600}
-          height={750}
-          className="w-full col-span-2 fade-in"
-          placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
-          sizes="33vw"
-        />
+        {interludio.fotinhas.map((img, index) => (
+          <Image
+            key={index}
+            src={img.src}
+            alt={img.alt}
+            width={img.width}
+            height={img.height}
+            className="col-span-2"
+            placeholder="blur"
+            blurDataURL={dataBlur}
+            sizes="33vw"
+          />
+        ))}
         <section className="w-full col-span-6 md:col-span-3 fade-in">
           <div className="py-10 px-[1rem] md:px-0 ">
             <p className=" text-lg lg:text-3xl">
-              &quot;Tem que ser delicioso e não ter veneno. Temos que saber quem
-              faz, de onde vem e como é feito.&quot;
+              &quot;{interludio.fraseImpactante}&quot;
             </p>
-            <p>Carta de valores da Junta Local</p>
+            <p>{interludio.fraseImpactanteAutor}</p>
           </div>
         </section>
         <Image
-          src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/paes-na-mesa.jpg"
-          alt="hero image"
-          width={1776}
-          height={999}
-          className="col-span-6  w-full fade-in"
+          src={interludio.imagenzona.src}
+          alt={interludio.imagenzona.alt}
+          width={interludio.imagenzona.width}
+          height={interludio.imagenzona.height}
+          className="col-span-6 w-full"
           placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
+          blurDataURL={dataBlur}
           sizes="80vw"
         />
       </section>
@@ -95,56 +79,47 @@ export default function Sobre() {
         <div className="container">
           <section className="md:border-t-4 pt-4 md:pt-4 flex flex-col md:flex-row relative lg:gap-4 mb-10 ">
             <div className="w-full md:w-6/12 lg:w-6/12 lg:sticky top-10 flex flex-col justify-between  lg:h-[90svh]">
-              <div className="text-lg md:text-3xl fade-in">
-                <p>
-                  &quot;Primavera é mudança. Desde 2020, entramos nesse
-                  movimento através das texturas, aromas e sabores que agora são
-                  parte da vida e da mesa de muita gente.
-                </p>
-                <p>
-                  Nosso trabalho é afirmar que, além de justa e consciente, sua
-                  escolha também pode ser deliciosa.&quot;
-                </p>
-              </div>
-              <p className="mt-10 mb-10 lg:mb-0 fade-in">
-                Eduardo Savino e Jualiana Padilha. <br /> Parceiros de todas as
-                primaveras.
-              </p>
+              <div
+                className="text-lg md:text-3xl fade-in"
+                dangerouslySetInnerHTML={{ __html: sobre.historia }}
+              ></div>
+              <p
+                className="mt-10 mb-10 lg:mb-0 fade-in"
+                dangerouslySetInnerHTML={{ __html: sobre.autoria }}
+              ></p>
             </div>
             <div className="w-full md:w-6/12">
               <Image
-                src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/primavera-socios.jpg"
-                alt="hero image"
-                width={720}
-                height={1080}
+                src={sobre.socios.src}
+                alt={sobre.socios.alt}
+                width={sobre.socios.width}
+                height={sobre.socios.height}
                 className="w-full fade-in"
                 placeholder="blur"
-                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
-                sizes="100vw"
+                blurDataURL={dataBlur}
+                sizes="50vw"
               />
-              <h2 className="mt-10 fade-in">
-                Três pilares que definem nosso trabalho:
-              </h2>
-
-              <SobreCard
-                src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/placeholder-primavera-dos-paes.gif"
-                alt="Matérias primas orgânicas"
-                title="Matérias primas orgânicas"
-                description="Utilização de matérias primas orgânicas, de cadeias sustentáveis e
-            locais"
-              />
-              <SobreCard
-                src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/placeholder-primavera-dos-paes.gif"
-                alt="Consumo Responsável"
-                title="Consumo Responsável"
-                description="Liberdade de cada um em consumir o quanto precisa."
-              />
-              <SobreCard
-                src="https://admin.primaveradospaes.com.br/wp-content/uploads/2024/04/placeholder-primavera-dos-paes.gif"
-                alt="Fermentação Natural"
-                title="Fermentação Natural"
-                description="Processo natural, que valoriza sabores e contribui para um produto de maior qualidade e digestibilidade"
-              />
+              <h2 className="mt-10 fade-in">{sobre.titulo}</h2>
+              {sobre.pilares.map((pilar, index) => (
+                <div className="w-full lg:flex gap-6 mt-4 lg:border-t pt-4 fae-in">
+                  <div className="w-full lg:w-9/12">
+                    <Image
+                      src={pilar.imagem.src}
+                      alt={pilar.imagem.alt}
+                      width={pilar.imagem.width}
+                      height={pilar.imagem.height}
+                      className="w-full fade-in"
+                      placeholder="blur"
+                      blurDataURL={dataBlur}
+                      sizes="33vw"
+                    />
+                  </div>
+                  <div className="w-full lg:w-6/12 lg:flex lg:flex-col justify-between ">
+                    <h3 className="mt-4 lg:mt-0">{pilar.title}</h3>
+                    <p>{pilar.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </section>
         </div>

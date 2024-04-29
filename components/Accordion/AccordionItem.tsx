@@ -1,5 +1,3 @@
-"use client";
-import { useState } from "react";
 import ArrowIcon from "../SVG/Arrow";
 export default function AccordionItem({ faq }: { faq: FAQ }) {
   return (

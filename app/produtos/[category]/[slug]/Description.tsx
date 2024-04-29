@@ -1,5 +1,5 @@
 "use client";
-import parse from "html-react-parser";
+//import parse from "html-react-parser";
 export default function Description({ description }: { description: string }) {
-  return <div>{parse(description)}</div>;
+  return <div dangerouslySetInnerHTML={{ __html: description }}></div>;
 }

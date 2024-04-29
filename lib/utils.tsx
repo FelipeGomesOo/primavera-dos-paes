@@ -35,9 +35,18 @@ function generateBreadCrumbObjects(str: string) {
   return array;
 }
 
+function getImg(image: any) {
+  return {
+    src: image?.node.sourceUrl,
+    width: image?.node.mediaDetails.width,
+    height: image?.node.mediaDetails.height,
+    alt: image?.node.altText,
+  };
+}
 export {
   animationDelay,
   objExists,
   extractImageUrls,
   generateBreadCrumbObjects,
+  getImg,
 };

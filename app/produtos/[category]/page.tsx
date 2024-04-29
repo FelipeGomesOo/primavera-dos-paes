@@ -1,38 +1,8 @@
 import Hero from "@/app/produtos/Hero";
 import Portfolio from "@/components/Portfolio/Portfolio";
 import { Suspense } from "react";
-import {
-  getProductCategories,
-  getProductsByCategory,
-  getSEO,
-} from "@/lib/data";
-import { Metadata, ResolvingMetadata } from "next";
+import { getProductCategories, getProductsByCategory } from "@/lib/data";
 import PortfolioSkeleton from "@/components/PortfolioSkeleton";
-type Props = {
-  params: { category: string };
-};
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  const { seoDescription, seoTitle, ogImage } = await getSEO(
-    `tipo_de_produto/${params.category}`,
-    "tipoDeProduto"
-  );
-  return {
-    title: seoTitle,
-    ...(seoDescription ? { description: seoDescription } : null),
-    openGraph: {
-      images: [
-        {
-          url: ogImage.src,
-          width: ogImage.width,
-          height: ogImage.height,
-        },
-      ],
-    },
-  };
-}
 
 export default async function Categoria({
   params,
@@ -51,10 +21,4 @@ export default async function Categoria({
       </section>
     </>
   );
-}
-export async function generateStaticParams() {
-  const categories = await getProductCategories();
-  return categories.map((item: any) => ({
-    category: item.slug,
-  }));
 }

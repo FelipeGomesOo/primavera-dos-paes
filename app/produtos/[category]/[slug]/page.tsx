@@ -1,4 +1,4 @@
-import { getProductBySlug, getProducts, getSEO } from "@/lib/data";
+import { getProduct } from "@/lib/data";
 import Image from "next/image";
 import BadgeCloud from "@/components/BadgeCloud";
 import Ingredients from "./Ingredientes";
@@ -7,39 +7,14 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Description from "./Description";
 import CTA from "./CTA";
 import When from "./When";
-import { Metadata, ResolvingMetadata } from "next";
 import Lojas from "./Lojas";
-type Props = {
-  params: { slug: string };
-};
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  const { seoDescription, seoTitle, ogImage } = await getSEO(
-    `produto/${params.slug}`,
-    "produto"
-  );
-  return {
-    title: seoTitle,
-    ...(seoDescription ? { description: seoDescription } : null),
-    openGraph: {
-      images: [
-        {
-          url: ogImage.src,
-          width: ogImage.width,
-          height: ogImage.height,
-        },
-      ],
-    },
-  };
-}
+
 export default async function Produto({
   params,
 }: {
   params: { slug: string };
 }) {
-  const product = await getProductBySlug(params.slug);
+  const product = await getProduct(params.slug);
   // console.log(product, "Pagina do produto");
   let badges: ProductTag[] = [];
   badges = badges.concat(product.qualities).concat(product.alerts);
@@ -48,9 +23,7 @@ export default async function Produto({
       <div className="container flex flex-col lg:flex-row gap-8 mb-12 justify-between reveal">
         <div className="w-full lg:w-8/12 xl:w-7/12 flex-none">
           <Breadcrumb category={product.category} />
-
           <h1 className="mt-2">{product.title}</h1>
-
           <Image
             src={product.featuredImage.src}
             alt={product.featuredImage.alt}
@@ -67,18 +40,8 @@ export default async function Produto({
             <Lojas stores={product.stores || undefined} />
           </article>
         </div>
-
         <CTA pricing={product.pricing} />
       </div>
     </>
   );
-}
-export async function generateStaticParams() {
-  const products = await getProducts();
-  const productSlugs = products.map((product: ProductCard) => ({
-    category: product.category,
-    slug: product.slug,
-  }));
-
-  return productSlugs;
 }
