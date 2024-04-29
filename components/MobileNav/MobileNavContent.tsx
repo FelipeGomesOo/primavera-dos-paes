@@ -28,7 +28,6 @@ export default function ModalContent({ onClose, menuOpen, menuItems }: any) {
           <MenuIcon onClick={onClose} menuOpen={menuOpen} />
         </section>
         <section className="grow container">
-          <h4>Navegue</h4>
           <NavMenu menuItems={menuItems} onClose={onClose} />
         </section>
         <section className="container  py-10 ">
