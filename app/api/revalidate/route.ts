@@ -13,6 +13,14 @@ export async function GET(request: NextRequest) {
   const path = request.nextUrl.searchParams.get("path");
   const type = request.nextUrl.searchParams.get("type");
   switch (type) {
+    case "all": {
+      revalidatePath("/", "layout");
+      return Response.json({
+        revalidated: true,
+        now: Date.now(),
+        message: "All site revalidated",
+      });
+    }
     case "product": {
       revalidateTag("tagGetProducts");
       revalidateTag("tagGetProductsByCategory");
