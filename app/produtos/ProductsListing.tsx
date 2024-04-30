@@ -5,10 +5,12 @@ import Portfolio from "@/components/Portfolio/Portfolio";
 import PortfolioSkeleton from "@/components/PortfolioSkeleton";
 import { unstable_cache } from "next/cache";
 
+const getCategories = unstable_cache(
+  async () => getProductCategories(),
+  ["productCategoriesTag"]
+);
 export default async function ProductsListing({ products }: { products: any }) {
-  const categories = unstable_cache(await getProductCategories(), [
-    "productCategoriesTag",
-  ]);
+  const categories = await getCategories();
   const { title } = await getProductsPage();
   return (
     <>
