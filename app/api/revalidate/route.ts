@@ -45,7 +45,7 @@ export async function GET(request: NextRequest) {
       });
     }
     case "faq": {
-      revalidateTag("tagFAQ");
+      revalidateTag("tagGETFAQ");
       return Response.json({
         revalidated: true,
         now: Date.now(),
@@ -61,7 +61,7 @@ export async function GET(request: NextRequest) {
       });
     }
     case "products": {
-      revalidateTag("tagProductsPage");
+      revalidateTag("tagGetProductsPage");
       return Response.json({
         revalidated: true,
         now: Date.now(),
