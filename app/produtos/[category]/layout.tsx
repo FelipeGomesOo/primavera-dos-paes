@@ -1,4 +1,4 @@
-import { getProductCategories, getProductCategory, getSEO } from "@/lib/data";
+import { getProductCategories, getProductCategory } from "@/lib/data";
 import { Metadata, ResolvingMetadata } from "next";
 
 type Props = {
