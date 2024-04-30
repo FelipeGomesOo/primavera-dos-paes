@@ -15,6 +15,8 @@ export async function GET(request: NextRequest) {
   switch (type) {
     case "all": {
       revalidatePath("/", "layout");
+      revalidatePath("/produtos/[category]", "layout");
+      revalidateTag("productCategoriesTag");
       return Response.json({
         revalidated: true,
         now: Date.now(),
