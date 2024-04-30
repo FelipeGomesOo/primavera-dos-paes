@@ -14,7 +14,7 @@ async function fetchAPIGraphql(
 ) {
   const headers = { "Content-Type": "application/json" };
   const res = await fetch("https://admin.primaveradospaes.com.br/graphql", {
-    next: { tags: [`tag${myTag}`] },
+    next: { tags: [`${myTag}`] },
     headers,
     method: "POST",
     body: JSON.stringify({
@@ -143,7 +143,7 @@ export async function getProducts() {
     }
     `,
     {},
-    "GetProducts"
+    "tagGetProducts"
   );
   const products = data.produtos.nodes.map((p: any) => {
     return {
@@ -348,8 +348,7 @@ export async function getProduct(slug: string) {
 }
 export async function getFeaturedProducts() {
   const data = await fetchAPIGraphql(
-    `
-    query getProducts {
+    `query getProducts {
       produtos(
         where: {
           status: PUBLISH, 
@@ -400,7 +399,7 @@ export async function getFeaturedProducts() {
       }
     }`,
     {},
-    "GetFeaturedProducts"
+    "tagGetFeaturedProducts"
   );
 
   const products = data.produtos.nodes.map((p: any) => {
@@ -475,11 +474,11 @@ export async function getProductsByCategory(slug: string) {
         }
       }
     }
-  }
-  `,
+  }`,
     {},
-    "GetProductsByCategory"
+    "tagGetProductsByCategory"
   );
+
   const products = data.produtos.nodes.map((p: any) => {
     return {
       id: p.id,
@@ -506,18 +505,16 @@ export async function getProductsByCategory(slug: string) {
 }
 export async function getProductCategories() {
   const data = await fetchAPIGraphql(
-    ` 
-  query getProductCategories {
+    `query getProductCategories {
     tiposDeProdutos(where: {hideEmpty: true}) {
       nodes {
         slug
         name
       }
     }
-  }
-    `,
+  }`,
     {},
-    "GetProductCategories"
+    "tagGetProductCategories"
   );
   return data.tiposDeProdutos.nodes;
 }
@@ -607,8 +604,7 @@ export async function getCategoryBySlug(slug: string) {
 }
 export async function getStores() {
   const data = await fetchAPIGraphql(
-    ` 
-  query getStores {
+    `query getStores {
     lojas(where: {status: PUBLISH}) {
       nodes {
         id
@@ -649,10 +645,9 @@ export async function getStores() {
         }
       }
     }
-  }
-    `,
+  }`,
     {},
-    "GetStores"
+    "tagGetStores"
   );
 
   const stores = data.lojas.nodes.map((s: any) => {
@@ -692,83 +687,19 @@ export async function getStoreBySlug(slug: string) {
   ///console.log(store, "store Data.ts");
   return store[0];
 }
-export async function getSEO(slug: string, type: string) {
-  const data = await fetchAPIGraphql(`
-  query getSEO {
-    ${type} (id: "${slug}", idType: URI) {
-      
-      ${
-        type === "page" || type === "produto" || type === "post"
-          ? `
-          title  
-          featuredImage {
-            node {
-              id
-              srcSet
-              sourceUrl
-              mediaDetails {
-                height
-                width
-              }
-            }
-          }
-      `
-          : "name"
-      }
-      sEO {
-        seo_descricao
-        seo_titulo
-        ogImage {
-          node {
-            sourceUrl
-            mediaDetails {
-              height
-              width
-            }
-          }
-        }
-      }
-    }
-  }
-`);
-
-  const page = {
-    seoDescription: data[type]?.sEO.seo_descricao,
-    seoTitle:
-      data[type]?.sEO.seo_titulo || data[type]?.title || data[type]?.name,
-    ogImage: {
-      src:
-        data[type]?.sEO.ogImage?.node.sourceUrl ||
-        data[type]?.featuredImage?.node.sourceUrl ||
-        `/opengraph-image.jpg`,
-      width:
-        data[type]?.sEO.ogImage?.node.mediaDetails.width ||
-        data[type]?.sEO.featuredImage?.node.mediaDetails.width ||
-        1200,
-      height:
-        data[type]?.sEO.ogImage?.node.mediaDetails.height ||
-        data[type]?.sEO.featuredImage?.node.mediaDetails.height ||
-        630,
-    },
-  };
-  //console.log(page, "Page SEO Data.ts");
-  return page;
-}
 export async function getFAQ() {
   const data = await fetchAPIGraphql(
-    `
-  query GetFAQ {
-    perguntasFrequentes {
-      nodes { 
-        id
-        title
-        content
+    `query GetFAQ {
+      perguntasFrequentes {
+        nodes { 
+          id
+          title
+          content
+        }
       }
-    }
-  }
-`,
+    }`,
     {},
-    "FAQ"
+    "tagGETFAQ"
   );
   const faqs = data.perguntasFrequentes.nodes.map((faq: any) => ({
     id: faq.id,
@@ -800,7 +731,7 @@ export async function getProductsPage() {
       }
     }`,
     {},
-    "ProductsPage"
+    "tagGetProductsPage"
   );
   let p = data.page;
   return {
@@ -1039,7 +970,7 @@ export async function getHomePage() {
       }
     }`,
     {},
-    "GetHomePage"
+    "tagGetHomePage"
   );
   let p = data.page;
   return {
