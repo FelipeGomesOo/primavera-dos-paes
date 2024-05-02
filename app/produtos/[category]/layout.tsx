@@ -29,11 +29,18 @@ export async function generateMetadata(
   };
 }
 
-export async function generateStaticParams() {
+/* export async function generateStaticParams() {
   const categories = await getProductCategories();
   return categories.map((item: any) => ({
     category: item.slug,
   }));
+} */
+
+export const dynamic = "force-static",
+  dynamicParams = true;
+
+export function generateStaticParams() {
+  return [];
 }
 export default function Layout({
   params,
