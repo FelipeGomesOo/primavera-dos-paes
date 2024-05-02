@@ -3,6 +3,7 @@ const { protocol, hostname, port, pathname } = new URL(process.env.BASE_URL);
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   distDir: "build",
+  reactStrictMode: true,
   images: {
     remotePatterns: [
       {
