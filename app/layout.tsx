@@ -51,6 +51,9 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+export const dynamic = "force-static",
+  dynamicParams = true;
+
 export default function RootLayout({
   children,
 }: Readonly<{
