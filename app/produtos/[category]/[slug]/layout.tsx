@@ -22,7 +22,8 @@ export async function generateMetadata(
     },
   };
 }
-export async function generateStaticParams({
+
+/* export async function generateStaticParams({
   params: { category },
 }: {
   params: { category: ProductCategory["slug"] };
@@ -31,8 +32,13 @@ export async function generateStaticParams({
   return products.map((product: ProductCard) => ({
     slug: product.slug,
   }));
-}
+} */
+export const dynamic = "force-static",
+  dynamicParams = true;
 
+export function generateStaticParams() {
+  return [];
+}
 export default function Layout({
   params,
   children,
