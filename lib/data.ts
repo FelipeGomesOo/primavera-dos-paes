@@ -2,10 +2,10 @@ import { extractImageUrls, getImg } from "./utils";
 
 const BASE_URL = process.env.BASE_URL;
 const API_URL = process.env.API_URL;
-const username = process.env.API_USERNAME;
-const password = process.env.API_PASSWORD;
+//const username = process.env.API_USERNAME;
+//const password = process.env.API_PASSWORD;
 
-const base64Credentials = btoa(`${username}:${password}`);
+//const base64Credentials = btoa(`${username}:${password}`);
 
 async function fetchAPIGraphql(query = "", myTag = "") {
   const res = await fetch("https://admin.primaveradospaes.com.br/graphql", {
@@ -24,7 +24,7 @@ async function fetchAPIGraphql(query = "", myTag = "") {
   }
   return json.data;
 }
-async function fetchAPI(query: string) {
+/* async function fetchAPI(query: string) {
   if (!BASE_URL) {
     throw new Error("BASE_URL is not defined");
   }
@@ -41,7 +41,7 @@ async function fetchAPI(query: string) {
   }
   //console.log(json);
   return json;
-}
+} */
 export async function getMenuItems() {
   /* const data = await fetchAPI(
     `menu-items/?
