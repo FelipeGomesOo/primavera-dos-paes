@@ -1,6 +1,5 @@
 import { getProductsByCategory } from "@/lib/data";
 import ProductsListing from "@/app/produtos/ProductsListing";
-
 export default async function Categoria({
   params,
 }: {

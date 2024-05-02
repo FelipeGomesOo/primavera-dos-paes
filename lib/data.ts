@@ -7,19 +7,13 @@ const password = process.env.API_PASSWORD;
 
 const base64Credentials = btoa(`${username}:${password}`);
 
-async function fetchAPIGraphql(
-  query = "",
-  { variables }: Record<string, any> = {},
-  myTag = ""
-) {
-  const headers = { "Content-Type": "application/json" };
+async function fetchAPIGraphql(query = "", myTag = "") {
   const res = await fetch("https://admin.primaveradospaes.com.br/graphql", {
     next: { tags: [`${myTag}`] },
-    headers,
+    headers: { "Content-Type": "application/json" },
     method: "POST",
     body: JSON.stringify({
       query,
-      variables,
     }),
   });
 
@@ -142,7 +136,6 @@ export async function getProducts() {
       }
     }
     `,
-    {},
     "tagGetProducts"
   );
   const products = data.produtos.nodes.map((p: any) => {
@@ -398,7 +391,6 @@ export async function getFeaturedProducts() {
         }
       }
     }`,
-    {},
     "tagGetFeaturedProducts"
   );
 
@@ -475,7 +467,6 @@ export async function getProductsByCategory(slug: string) {
       }
     }
   }`,
-    {},
     "tagGetProductsByCategory"
   );
 
@@ -513,7 +504,6 @@ export async function getProductCategories() {
       }
     }
   }`,
-    {},
     "tagGetProductCategories"
   );
   return data.tiposDeProdutos.nodes;
@@ -540,9 +530,7 @@ export async function getProductCategory(slug: string) {
           }
         }
     }
-  }
-    `,
-    {},
+  }`,
     "GetProductCategory"
   );
   const c = data.tipoDeProduto;
@@ -646,7 +634,6 @@ export async function getStores() {
       }
     }
   }`,
-    {},
     "tagGetStores"
   );
 
@@ -698,7 +685,6 @@ export async function getFAQ() {
         }
       }
     }`,
-    {},
     "tagGETFAQ"
   );
   const faqs = data.perguntasFrequentes.nodes.map((faq: any) => ({
@@ -730,7 +716,6 @@ export async function getProductsPage() {
         }
       }
     }`,
-    {},
     "tagGetProductsPage"
   );
   let p = data.page;
@@ -969,7 +954,6 @@ export async function getHomePage() {
         }
       }
     }`,
-    {},
     "tagGetHomePage"
   );
   let p = data.page;

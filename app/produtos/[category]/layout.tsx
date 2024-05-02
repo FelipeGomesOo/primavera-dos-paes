@@ -1,6 +1,6 @@
 import { getProductCategories, getProductCategory } from "@/lib/data";
 import { Metadata, ResolvingMetadata } from "next";
-
+export const revalidate = 0;
 type Props = {
   params: { category: string };
 };

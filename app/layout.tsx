@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { getHomePage } from "@/lib/data";
 import FloatingWhatsapp from "@/components/FloatingWhatsapp";
 import { GoogleTagManager } from "@next/third-parties/google";
+export const runtime = "nodejs";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "700"],
