@@ -15,6 +15,8 @@ export async function GET(request: NextRequest) {
   switch (type) {
     case "all": {
       revalidatePath("/", "layout");
+      revalidatePath("/(home)", "page");
+      revalidatePath("/produtos");
       revalidatePath("/produtos", "layout");
       revalidatePath("/produtos/[category]", "layout");
       revalidatePath("/produtos/[slug]", "layout");
@@ -22,6 +24,14 @@ export async function GET(request: NextRequest) {
         revalidated: true,
         now: Date.now(),
         message: "All site revalidated",
+      });
+    }
+    case "singleall": {
+      revalidatePath("/", "layout");
+      return Response.json({
+        revalidated: true,
+        now: Date.now(),
+        message: "single All site revalidated",
       });
     }
     case "product": {
