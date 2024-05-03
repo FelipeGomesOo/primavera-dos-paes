@@ -13,7 +13,7 @@ export default async function Lojas() {
             <div className="pt-4 border-t-4  lg:sticky top-10 h-[85svh]  lg:h-[90svh] flex flex-col justify-between">
               <h2 className="fade-in">{lojas.titulo}</h2>
               <div className="flex flex-col gap-6">
-                <div className="text-sm md:text-base xl:pr-10">
+                <div>
                   {stores.map((store: Store, index: number) => (
                     <Store key={index} store={store} />
                   ))}
