@@ -7,14 +7,13 @@ export default async function Header({ className }: { className: string }) {
   const menuItems = await getMenuItems();
   return (
     <>
-      <header
-        className={`container h-24 flex justify-between items-center mb-14 md:mb-24 ${className}`}
-      >
-        <Link href={"/"}>
-          <Logo className="w-[9rem] fill-primary-dark  hover:fill-primary  md:w-[12rem] xl:w-[11rem] " />
-        </Link>
-
-        <MobileNav menuItems={menuItems} />
+      <header className={`container mb-14 md:mb-24 ${className} `}>
+        <div className="relative h-24 flex justify-between items-center">
+          <Link href={"/"}>
+            <Logo className="w-[9rem] fill-primary-dark  hover:fill-primary  md:w-[12rem] xl:w-[11rem] " />
+          </Link>
+          <MobileNav menuItems={menuItems} />
+        </div>
       </header>
     </>
   );

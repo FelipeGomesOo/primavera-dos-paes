@@ -1,6 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  timeline-scope: --main;
+}
+main {
+  view-timeline: --main;
+}
+.menuIcon {
+  animation-timeline: --main;
+  animation-range: exit-crossing -1rem exit-crossing 0;
+}
 .scrollable-content::-webkit-scrollbar {
   display: none;
 }
@@ -45,6 +56,9 @@ html.lenis body {
   }
 }
 @layer components {
+  .menuIcon {
+    @apply animate-fixedMenu flex flex-col justify-center;
+  }
   .reveal {
     opacity: 0;
     @apply animate-reveal  [animation-duration:2s];

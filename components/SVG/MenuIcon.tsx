@@ -22,11 +22,11 @@ export default function MenuIcon({ onClick, menuOpen }: any) {
     </>
   );
   return (
-    <div className="content-center z-10">
+    <div className="content-center z-40 menuIcon  ">
       <button
         onClick={onClick}
         type="button"
-        className=" relative px-3 py-1 focus:outline-none"
+        className=" relative px-3 py-1 focus:outline-none "
         aria-controls="mobile-menu"
         aria-expanded="false"
       >

@@ -64,10 +64,23 @@ const config: Config = {
             opacity: "1",
           },
         },
+        fixedMenu: {
+          to: {
+            boxShadow: "0 5px 5px -3px rgba(0, 0, 0, 0.26)",
+            background: "#fff",
+            right: "2rem",
+            top: "1rem",
+            height: "4rem",
+            borderRadius: "99rem",
+            opacity: "1",
+            position: "fixed",
+          },
+        },
       },
       animation: {
         "fade-out-down": "fade-out-down linear forwards",
         reveal: "reveal forwards cubic-bezier(0.165, 0.84, 0.44, 1)",
+        fixedMenu: "fixedMenu 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards",
       },
     },
   },
