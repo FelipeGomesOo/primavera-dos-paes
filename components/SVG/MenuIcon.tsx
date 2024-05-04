@@ -22,7 +22,7 @@ export default function MenuIcon({ onClick, menuOpen }: any) {
     </>
   );
   return (
-    <div className="content-center z-40 menuIcon  ">
+    <div className="content-center z-40 menuIcon top-4 right-4 md:right-8 bg-[#fff] rounded-full">
       <button
         onClick={onClick}
         type="button"

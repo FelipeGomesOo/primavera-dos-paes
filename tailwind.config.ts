@@ -67,12 +67,7 @@ const config: Config = {
         fixedMenu: {
           to: {
             boxShadow: "0 5px 5px -3px rgba(0, 0, 0, 0.26)",
-            background: "#fff",
-            right: "2rem",
-            top: "1rem",
             height: "4rem",
-            borderRadius: "99rem",
-            opacity: "1",
             position: "fixed",
           },
         },
