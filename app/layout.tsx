@@ -3,7 +3,7 @@ import { Courier_Prime, Poppins } from "next/font/google";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { getHomePage } from "@/lib/data";
+import { getGeral, getHomePage } from "@/lib/data";
 import FloatingWhatsapp from "@/components/FloatingWhatsapp";
 import { GoogleTagManager } from "@next/third-parties/google";
 export const runtime = "nodejs";
@@ -51,17 +51,18 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { tm_id, tm_status } = await getGeral();
   return (
     <html
       lang="pt-br"
       className={`min-h-full ${courier.variable} ${poppins.variable} `}
     >
-      <GoogleTagManager gtmId="GTM-NGZXTL2Z" />
+      {tm_status && <GoogleTagManager gtmId={tm_id} />}
       <body className="flex flex-col min-h-svh">
         <FloatingWhatsapp />
         <Header className="flex-none" />

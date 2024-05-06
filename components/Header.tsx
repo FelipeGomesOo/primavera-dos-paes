@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Logo from "@/components/SVG/Logo";
 import MobileNav from "./MobileNav/MobileNav";
-import { getMenuItems } from "@/lib/data";
-import { animationDelay } from "@/lib/utils";
+import { getGeral, getMenuItems } from "@/lib/data";
 export default async function Header({ className }: { className: string }) {
   const menuItems = await getMenuItems();
+  const geral = await getGeral();
   return (
     <>
       <header className={`container mb-14 md:mb-24 ${className} `}>
@@ -12,7 +12,7 @@ export default async function Header({ className }: { className: string }) {
           <Link href={"/"}>
             <Logo className="w-[9rem] fill-primary-dark  hover:fill-primary  md:w-[12rem] xl:w-[11rem] " />
           </Link>
-          <MobileNav menuItems={menuItems} />
+          <MobileNav menuItems={menuItems} geral={geral} />
         </div>
       </header>
     </>

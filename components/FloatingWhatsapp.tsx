@@ -1,14 +1,15 @@
-import Whatsapp from "@/components/Whatsapp";
+import Whatsapp from "@/components/SVG/Whatsapp";
 import { animationDelay } from "@/lib/utils";
 import Link from "next/link";
-
-export default function FloatingWhatsapp() {
+import { getGeral } from "@/lib/data";
+export default async function FloatingWhatsapp() {
+  const { whatsapp_link, class_botao_flutuante } = await getGeral();
   return (
     <Link
       style={animationDelay(9)}
-      href="https://wa.link/k4o0wr"
+      href={whatsapp_link}
       target="_blank"
-      className="reveal fixed group bottom-5 right-4 lg:right-8 lg:bottom-10 z-50 w-16 h-16 bg-[#25D366] rounded-full  flex items-center justify-center hover:scale-110  hover:bg-[#25D366] transition-all  shadow shadow-primary-dark/20 hover:shadow-[#25D366] border-2 border-[#fff] "
+      className={`${class_botao_flutuante}  reveal fixed group bottom-5 right-4 lg:right-8 lg:bottom-10 z-50 w-16 h-16 bg-[#25D366] rounded-full  flex items-center justify-center hover:scale-110  hover:bg-[#25D366] transition-all  shadow shadow-primary-dark/20 hover:shadow-[#25D366] border-2 border-[#fff]`}
     >
       <div className="absolute bg-[#fff] w-[9.5rem] right-[4.5rem] text-[0.75rem] text-center rounded-md py-1 px-1 flex items-center shadow shadow-primary-dark/20">
         <div className="w-5 h-4 flex items-center justify-center relative">

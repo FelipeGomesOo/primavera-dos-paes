@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { getFAQ } from "@/lib/data";
+import { getFAQ, getGeral } from "@/lib/data";
 import Accordion from "./Accordion/Accordion";
 import LogoLetras from "./SVG/LogoLetras";
 export default async function Footer({ className }: { className: string }) {
   const FAQ = await getFAQ();
+  const { whatsapp_number, email } = await getGeral();
   return (
     <footer className={` bg-primary-light/10 fade-in  ${className}`}>
       <section className="container min-h-[105svh] lg:min-h-[100svh] py-10 flex flex-col gap-10 ">
@@ -15,7 +16,7 @@ export default async function Footer({ className }: { className: string }) {
             <h4 className="lg:border-b lg:pb-4 lg:mb-4">Nossos contatos:</h4>
             <div className="md:text-lg">
               <p>
-                contato@primaveradospaes.com.br <br /> +55 21 99222.0003
+                {email} <br /> {whatsapp_number}
               </p>
             </div>
           </div>

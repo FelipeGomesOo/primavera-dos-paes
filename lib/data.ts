@@ -1035,3 +1035,32 @@ export async function getHomePage() {
     },
   };
 }
+
+export async function getGeral() {
+  const data = await fetchAPIGraphql(
+    `query getGeral {
+      geral {
+        email
+        whatsapp_link
+        whatsapp_number
+        atendimento_whatsapp
+        tm_status
+        tm_id
+        class_botao_flutuante
+        class_botao_produtos 
+      }
+    }`,
+    "tagGetGeral"
+  );
+  const g = data.geral;
+  return {
+    email: g.email,
+    whatsapp_link: g.whatsapp_link,
+    whatsapp_number: g.whatsapp_number,
+    atendimento_whatsapp: g.atendimento_whatsapp,
+    tm_status: g.tm_status,
+    tm_id: g.tm_id,
+    class_botao_flutuante: g.class_botao_flutuante,
+    class_botao_produtos: g.class_botao_produtos,
+  };
+}

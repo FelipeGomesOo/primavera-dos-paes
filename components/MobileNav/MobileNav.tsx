@@ -3,7 +3,7 @@ import MenuIcon from "@/components/SVG/MenuIcon";
 import MobileNavContent from "@/components/MobileNav/MobileNavContent";
 import { useState } from "react";
 
-export default function MobileNav({ menuItems }: any) {
+export default function MobileNav({ menuItems, geral }: any) {
   const [menuOpen, setMenuOpen] = useState(false);
   const handleClick = () => {
     setMenuOpen(!menuOpen);
@@ -16,6 +16,7 @@ export default function MobileNav({ menuItems }: any) {
         menuItems={menuItems}
         onClose={handleClick}
         menuOpen={menuOpen}
+        geral={geral}
       />
     </>
   );

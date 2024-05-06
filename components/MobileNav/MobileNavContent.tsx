@@ -1,10 +1,15 @@
 import MenuIcon from "@/components/SVG/MenuIcon";
-import Logo from "@/components/SVG/Logo";
 import Link from "next/link";
 import NavMenu from "@/components/NavMenu";
-import LogoIcon from "../SVG/LogoIcon";
+import LogoIcon from "@/components/SVG/LogoIcon";
 
-export default function ModalContent({ onClose, menuOpen, menuItems }: any) {
+export default function ModalContent({
+  onClose,
+  menuOpen,
+  menuItems,
+  geral,
+}: any) {
+  const { email, whatsapp_number, whatsapp_link } = geral;
   return (
     <div
       className={`${
@@ -32,11 +37,11 @@ export default function ModalContent({ onClose, menuOpen, menuItems }: any) {
         </section>
         <section className="container  py-10 ">
           <h4>Contatos</h4>
-          <p className="mb-0 lg:text-xl">contato@primaveradospaes.com.br </p>
-          <p className="m-0 lg:text-xl">+55 21 99222.0003</p>
+          <p className="mb-0 lg:text-xl">{email}</p>
+          <p className="m-0 lg:text-xl">{whatsapp_number}</p>
           <Link
             className="button medium mt-6"
-            href="https://wa.link/k4o0wr"
+            href={whatsapp_link}
             target="_blank"
           >
             Falar via Whatsapp
