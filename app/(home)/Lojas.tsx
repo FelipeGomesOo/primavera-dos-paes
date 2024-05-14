@@ -8,10 +8,10 @@ export default async function Lojas() {
   return (
     <section id="lojas" className="bg-primary-light/20 py-[5svh] lg:py-[10svh]">
       <div className="lg:container">
-        <section className=" flex flex-col lg:flex-row justify-between gap-6 xg:gap-4 fade-in ">
-          <div className="px-4 lg:px-0 w-full lg:w-6/12">
-            <div className="pt-4 border-t-4  lg:sticky top-10 h-[85svh]  lg:h-[90svh] flex flex-col justify-between">
-              <h2 className="fade-in">{lojas.titulo}</h2>
+        <section className=" flex flex-col lg:flex-row justify-between gap-6 xg:gap-4  ">
+          <div className="px-4 lg:px-0 w-full lg:w-6/12 2xl:pr-10">
+            <div className="pt-4 border-t-4  lg:sticky top-10 h-[85svh]  lg:h-[90svh] flex flex-col justify-between  ">
+              <h2>{lojas.titulo}</h2>
               <div className="flex flex-col gap-6">
                 <div>
                   {stores.map((store: Store, index: number) => (
@@ -19,8 +19,8 @@ export default async function Lojas() {
                   ))}
                 </div>
                 <div className="text-sm md:text-base">
-                  <h4 className="fade-in">{lojas.entregas.titulo}</h4>
-                  <p className="xl:pr-10 fade-in">{lojas.entregas.descricao}</p>
+                  <h4>{lojas.entregas.titulo}</h4>
+                  <p>{lojas.entregas.descricao}</p>
                   <Link href={lojas.botao.link} className="mt-2 button small">
                     {lojas.botao.titulo}
                   </Link>

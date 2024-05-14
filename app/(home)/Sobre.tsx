@@ -77,8 +77,8 @@ export default async function Sobre() {
       </section>
       <section id="sobre">
         <div className="container">
-          <section className="md:border-t-4 pt-4 md:pt-4 flex flex-col md:flex-row relative lg:gap-4 mb-10 ">
-            <div className="w-full md:w-6/12 lg:w-6/12 lg:sticky top-10 flex flex-col justify-between  lg:h-[90svh]">
+          <section className="md:border-t-4 pt-4 md:pt-4 flex flex-col lg:flex-row relative lg:gap-4 mb-10 ">
+            <div className="w-full   lg:w-6/12 lg:sticky top-10 flex flex-col justify-between  lg:h-[90svh]">
               <div
                 className="text-lg md:text-3xl fade-in"
                 dangerouslySetInnerHTML={{ __html: sobre.historia }}
@@ -88,7 +88,7 @@ export default async function Sobre() {
                 dangerouslySetInnerHTML={{ __html: sobre.autoria }}
               ></p>
             </div>
-            <div className="w-full md:w-6/12">
+            <div className="w-full lg:w-6/12">
               <Image
                 src={sobre.socios.src}
                 alt={sobre.socios.alt}

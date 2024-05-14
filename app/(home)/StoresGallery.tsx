@@ -4,9 +4,9 @@ export default function StoresGallery({ stores }: { stores: Store[] }) {
   return (
     <>
       {stores.map((store: Store, index: number) =>
-        store.featuredImage.map((img: FaturedImage) => (
+        store.featuredImage.map((img: FaturedImage, aindex: number) => (
           <div
-            key={index}
+            key={index + aindex}
             className=" lg:mb-4  lg:max-h-auto lg:max-h-none scroll-ml-6 shrink-0 relative"
           >
             <div className="absolute w-full h-40 bottom-0 text-sm left-0 px-1 flex flex-row items-end   z-10 text-[#fff] bg-gradient-to-t from-primary-dark/80 to-from-primary-dark/90 to-80%">

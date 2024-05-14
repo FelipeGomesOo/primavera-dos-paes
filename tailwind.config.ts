@@ -38,11 +38,20 @@ const config: Config = {
       },
     },
     extend: {
+      aspectRatio: {
+        productImgRatio: "10 / 7",
+        teste: "1 / 1",
+      },
       fontFamily: {
         sans: ["var(--font-poppins)"],
         mono: ["var(--font-courier-prime)"],
       },
       screens: {
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1536px",
         "3xl": "1792px",
       },
       keyframes: {
@@ -79,6 +88,12 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  corePlugins: {
+    aspectRatio: false,
+  },
+  plugins: [
+    require("@tailwindcss/container-queries"),
+    require("@tailwindcss/aspect-ratio"),
+  ],
 };
 export default config;

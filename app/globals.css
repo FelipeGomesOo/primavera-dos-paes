@@ -56,6 +56,9 @@ html.lenis body {
   }
 }
 @layer components {
+  .container {
+    @apply max-w-[1792px];
+  }
   .menuIcon {
     @apply animate-fixedMenu flex flex-col justify-center;
   }

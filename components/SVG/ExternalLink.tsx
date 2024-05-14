@@ -4,9 +4,9 @@ export default function ExternalLink({ className }: { className?: string }) {
       className={className}
       viewBox="0 0  24 24"
       fill="none"
-      shape-rendering="geometricPrecision"
+      shapeRendering="geometricPrecision"
       stroke="currentColor"
-      stroke-width="2"
+      strokeWidth="2"
     >
       <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
       <path d="M15 3h6v6"></path>

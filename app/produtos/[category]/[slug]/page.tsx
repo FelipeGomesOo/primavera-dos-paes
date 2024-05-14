@@ -32,6 +32,10 @@ export default async function Produto({
             width={product.featuredImage.width}
             height={product.featuredImage.height}
             className="w-full"
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UQ8AAlUBaWcVN3EAAAAASUVORK5CYII="
+            sizes="80vw"
+            priority
           />
           <BadgeCloud badges={badges} />
           <article className="w-ful grow flex flex-col gap-6">
