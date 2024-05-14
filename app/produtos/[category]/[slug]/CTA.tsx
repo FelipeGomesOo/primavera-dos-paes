@@ -13,7 +13,7 @@ export default async function CTA({
   } = await getGeral();
   return (
     <div
-      className={`${class_botao_produtos} w-full lg:w-[18rem] lg:sticky top-10 flex-none border rounded p-6 border-primary-light/20 self-start`}
+      className={` w-full lg:w-[18rem] lg:sticky top-10 flex-none border rounded p-6 border-primary-light/20 self-start`}
     >
       <h3 className="pb-6 mb-4 border-b border-b-primary-light/20">
         Peça por telefone ou whatsapp
@@ -44,7 +44,7 @@ export default async function CTA({
       )}
 
       <Link
-        className="button large bg-primary-dark text-[#fff] hover:scale-105  hover:bg-[#25D366] w-full my-4  "
+        className={`button large bg-primary-dark text-[#fff] hover:scale-105  hover:bg-[#25D366] w-full my-4 ${class_botao_produtos}`}
         href={whatsapp_link}
       >
         Peça no WhatsApp
