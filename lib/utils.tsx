@@ -43,10 +43,23 @@ function getImg(image: any) {
     alt: image?.node.altText,
   };
 }
+
+function sortByName(items: Array<object>) {
+  return items.sort(function (a, b) {
+    if ((a as any).name > (b as any).name) {
+      return 1;
+    }
+    if ((a as any).name < (b as any).name) {
+      return -1;
+    }
+    return 0;
+  });
+}
 export {
   animationDelay,
   objExists,
   extractImageUrls,
   generateBreadCrumbObjects,
   getImg,
+  sortByName,
 };
