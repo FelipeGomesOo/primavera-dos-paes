@@ -561,11 +561,12 @@ export function filterProductsByTag(
   return tagFilters.length === 0
     ? products
     : products.filter((product: any) =>
-        product.qualities.some((tag: ProductTag) =>
-          tagFilters.includes(tag.slug)
+        tagFilters.every((tagFilter: string) =>
+          product.qualities.some((tag: ProductTag) => tag.slug === tagFilter)
         )
       );
 }
+
 export function getTagsfromProducts(products: ProductCard[]) {
   let tags: ProductTag[] = [];
   products.forEach((product: ProductCard) => {
