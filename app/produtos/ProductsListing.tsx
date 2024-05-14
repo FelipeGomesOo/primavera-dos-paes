@@ -16,7 +16,9 @@ export default async function ProductsListing({ products }: { products: any }) {
     <>
       <Hero>{title}</Hero>
       <Suspense fallback={<PortfolioSkeleton />}>
-        <Portfolio products={products} categories={categories} />
+        <div className="mb-10">
+          <Portfolio products={products} categories={categories} />
+        </div>
       </Suspense>
     </>
   );
