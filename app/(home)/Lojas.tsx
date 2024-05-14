@@ -1,7 +1,7 @@
 import StoresGallery from "./StoresGallery";
 import { getHomePage, getStores } from "@/lib/data";
 import Link from "next/link";
-import Store from "./Store";
+import Store from "@/components/Store";
 export default async function Lojas() {
   const stores = await getStores();
   const { lojas } = await getHomePage();
