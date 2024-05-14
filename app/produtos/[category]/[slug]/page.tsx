@@ -36,7 +36,7 @@ export default async function Produto({
             <Description description={product.content} />
             <Conservation tips={product.conservation} />
             <Ingredients ingredients={product.ingredients} />
-            <When title={product.title} when={product.when} />
+            <When when={product.when} />
             <Lojas stores={product.stores || undefined} />
           </article>
         </div>

@@ -1,8 +1,8 @@
-export default function When({ when, title }: { when: string; title: string }) {
+export default function When({ when }: { when: string }) {
   return (
     when && (
       <div>
-        <h4>Quando sai o {title}?</h4>
+        <h4>Quando sai?</h4>
         <p>{when}</p>
       </div>
     )
