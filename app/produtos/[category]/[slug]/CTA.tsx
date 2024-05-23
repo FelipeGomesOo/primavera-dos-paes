@@ -1,16 +1,15 @@
 import { getGeral } from "@/lib/data";
+import { generateWhatsAppLink } from "@/lib/utils";
 import Link from "next/link";
 export default async function CTA({
   pricing,
+  productName,
 }: {
   pricing: Product["pricing"];
+  productName: string;
 }) {
-  const {
-    atendimento_whatsapp,
-    whatsapp_number,
-    whatsapp_link,
-    class_botao_produtos,
-  } = await getGeral();
+  const { atendimento_whatsapp, whatsapp_number, class_botao_produtos } =
+    await getGeral();
   return (
     <div
       className={` w-full lg:w-[18rem] lg:sticky top-10 flex-none border rounded p-6 border-primary-light/20 self-start`}
@@ -45,7 +44,7 @@ export default async function CTA({
 
       <Link
         className={`button large bg-primary-dark text-[#fff] hover:scale-105  hover:bg-[#25D366] w-full my-4 ${class_botao_produtos}`}
-        href={whatsapp_link}
+        href={generateWhatsAppLink(whatsapp_number, productName)}
       >
         Peça no WhatsApp
       </Link>

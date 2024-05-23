@@ -55,6 +55,13 @@ function sortByName(items: Array<object>) {
     return 0;
   });
 }
+function generateWhatsAppLink(phoneNumber: string, product: string) {
+  const message =
+    "Oi! Eu vim do site e queria saber mais sobre o seguinte produto: ";
+  const encodedMessage = encodeURIComponent(message);
+  const encodedProduct = encodeURIComponent(product);
+  return `https://wa.me/+5521992220003?text=${encodedMessage}${encodedProduct}.`;
+}
 export {
   animationDelay,
   objExists,
@@ -62,4 +69,5 @@ export {
   generateBreadCrumbObjects,
   getImg,
   sortByName,
+  generateWhatsAppLink,
 };

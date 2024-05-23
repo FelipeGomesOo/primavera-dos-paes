@@ -77,16 +77,13 @@ export default async function Sobre() {
       </section>
       <section id="sobre">
         <div className="container">
-          <section className="md:border-t-4 pt-4 md:pt-4 flex flex-col lg:flex-row relative lg:gap-4 mb-10 ">
-            <div className="w-full   lg:w-6/12 lg:sticky top-10 flex flex-col justify-between  lg:h-[90svh]">
+          <section className="flex flex-col justify-between lg:flex-row relative xl:gap-14 gap-6 mb-10 ">
+            <div className="w-full pt-4 border-t-4 lg:w-6/12 lg:sticky top-10 flex flex-col justify-between  lg:h-[90svh]">
+              <h2 className="fade-in">Sobre nós</h2>
               <div
-                className="text-lg md:text-3xl fade-in"
+                className="text-sm md:text-base xl:text-lg 2xl:text-xl fade-in"
                 dangerouslySetInnerHTML={{ __html: sobre.historia }}
               ></div>
-              <p
-                className="mt-10 mb-10 lg:mb-0 fade-in"
-                dangerouslySetInnerHTML={{ __html: sobre.autoria }}
-              ></p>
             </div>
             <div className="w-full lg:w-6/12">
               <Image
@@ -99,13 +96,13 @@ export default async function Sobre() {
                 blurDataURL={dataBlur}
                 sizes="50vw"
               />
-              <h2 className="mt-10 fade-in">{sobre.titulo}</h2>
+              <h3 className="mt-10 fade-in">{sobre.titulo}</h3>
               {sobre.pilares.map((pilar, index) => (
                 <div
                   key={index}
-                  className="w-full lg:flex gap-6 mt-4 lg:border-t pt-4 fade-in"
+                  className="w-full flex gap-6 mt-4 lg:border-t pt-4 fade-in"
                 >
-                  <div className="w-full lg:w-9/12">
+                  <div className="w-3/12">
                     <Image
                       src={pilar.imagem.src}
                       alt={pilar.imagem.alt}
@@ -117,8 +114,8 @@ export default async function Sobre() {
                       sizes="33vw"
                     />
                   </div>
-                  <div className="w-full lg:w-6/12 lg:flex lg:flex-col justify-between ">
-                    <h3 className="mt-4 lg:mt-0">{pilar.title}</h3>
+                  <div className="w-9/12 flex  flex-col justify-center">
+                    <h4 className="mt-4 lg:mt-0">{pilar.title}</h4>
                     <p>{pilar.description}</p>
                   </div>
                 </div>

@@ -6,9 +6,12 @@ export default async function Footer({ className }: { className: string }) {
   const FAQ = await getFAQ();
   const { whatsapp_number, email } = await getGeral();
   return (
-    <footer className={` bg-primary-light/10 fade-in  ${className}`}>
+    <footer
+      id="contato"
+      className={` bg-primary-light/10 fade-in  ${className}`}
+    >
       <section className="container min-h-[105svh] lg:min-h-[100svh] py-10 flex flex-col gap-10 ">
-        <section className="w-full h-[20svh] grow lg:h-[30svh]  border-t-4 pt-4 md:pt-4">
+        <section className="w-full h-[20svh] lg:h-[40svh] border-t-4 pt-4 md:pt-4">
           <h2>Fale conosco</h2>
         </section>
         <section className="lg:flex w-full gap-4 justify-between  fade-in">

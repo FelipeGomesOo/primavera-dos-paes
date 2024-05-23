@@ -37,7 +37,7 @@ html.lenis body {
 }
 @layer base {
   h1 {
-    @apply text-[2.2rem]/9  md:text-5xl/none 3xl:text-6xl font-bold mb-4 md:mb-8;
+    @apply text-[2.2rem]/tight  md:text-5xl 3xl:text-6xl font-bold mb-4 md:mb-8;
   }
   h2 {
     @apply text-3xl/tight md:text-4xl/tight font-bold mb-6;

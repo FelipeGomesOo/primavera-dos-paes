@@ -45,7 +45,7 @@ export default async function Produto({
             <When when={product.when} />
           </article>
         </div>
-        <CTA pricing={product.pricing} />
+        <CTA pricing={product.pricing} productName={product.title} />
       </section>
       <section className="py-10">
         <div className="container">
