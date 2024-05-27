@@ -53,9 +53,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   const { tm_id, tm_status } = await getGeral();
   return (
     <html
