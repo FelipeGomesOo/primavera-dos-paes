@@ -19,7 +19,10 @@ export default async function Produtos() {
       <Suspense fallback={<>...</>}>
         <Portfolio products={products}>
           <div className="container">
-            <Link className="button medium w-full mt-6 " href="/produtos">
+            <Link
+              className="button medium w-full mt-6 botao-conheca-produtos"
+              href="/produtos"
+            >
               Confira todos os produtos
             </Link>
           </div>

@@ -37,7 +37,10 @@ export default async function Hero() {
         ))}
         <section className="lg:col-span-5 xl:col-start-4 xl:col-span-3 col-span-6 px-[1rem] md:px-0 fade-in py-10">
           <p className=" text-base md:text-3xl mb-4">{hero.fraseImpactante}</p>
-          <Link href="/produtos" className="button small">
+          <Link
+            href="/produtos"
+            className="button small botao-conheca-produtos"
+          >
             Conheça nossos produtos
           </Link>
         </section>
