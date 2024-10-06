@@ -1,0 +1,150 @@
+{
+  "/opaaaa/": {
+    "destination": "/produtos/",
+    "permanent": true
+  },
+  "/portfolio_category/todos/": {
+    "destination": "/produtos/",
+    "permanent": true
+  },
+  "/portfolio_category/paes/": {
+    "destination": "/produtos/biscoitos/",
+    "permanent": true
+  },
+  "/portfolio_category/biscoitos/": {
+    "destination": "/produtos/biscoitos/",
+    "permanent": true
+  },
+  "/portfolio_category/bolos/": {
+    "destination": "/produtos/bolos/",
+    "permanent": true
+  },
+  "/portfolio_category/brioche/": {
+    "destination": "/produtos/brioches/",
+    "permanent": true
+  },
+  "/portfolio_category/mercearia/": {
+    "destination": "/produtos/",
+    "permanent": true
+  },
+  "/portfolio-items/amanteigado/": {
+    "destination": "/produtos/biscoitos/amanteigado",
+    "permanent": true
+  },
+  "/portfolio-items/babka-3-chocolates/": {
+    "destination": "/produtos/brioches/babka-3-chocolates",
+    "permanent": true
+  },
+  "/portfolio-items/bisnaguinha/": {
+    "destination": "/produtos/brioches/bisnaguinha",
+    "permanent": true
+  },
+  "/portfolio-items/bolo-de-cenoura/": {
+    "destination": "/produtos/bolos/bolo-de-cenoura",
+    "permanent": true
+  },
+  "/portfolio-items/bolo-de-fuba-com-goiabada": {
+    "destination": "/produtos/bolos/bolo-de-fuba-com-goiabada",
+    "permanent": true
+  },
+  "/portfolio-items/branquelin/": {
+    "destination": "/produtos/paes/branquelin",
+    "permanent": true
+  },
+  "/portfolio-items/brioche/": {
+    "destination": "/produtos/brioches/brioche",
+    "permanent": true
+  },
+  "/portfolio-items/brioche-c-chocolate/": {
+    "destination": "/produtos/brioches/brioche-c-chocolate",
+    "permanent": true
+  },
+  "/portfolio-items/campones/": {
+    "destination": "/produtos/paes/campones",
+    "permanent": true
+  },
+  "/portfolio-items/campones-c-azeitonas/": {
+    "destination": "/produtos/paes/campones-c-azeitonas",
+    "permanent": true
+  },
+  "/portfolio-items/campones-c-figos-e-nozes": {
+    "destination": "/produtos/paes/campones-c-figos-e-nozes",
+    "permanent": true
+  },
+  "/portfolio-items/campones-c-goiabada/": {
+    "destination": "/produtos/paes/campones-c-goiabada",
+    "permanent": true
+  },
+  "/portfolio-items/campones-c-queijo-da-canastra": {
+    "destination": "/produtos/paes/campones-c-queijo-da-canastra",
+    "permanent": true
+  },
+  "/portfolio-items/canastrinha/": {
+    "destination": "/produtos/brioches/canastrinha",
+    "permanent": true
+  },
+  "/portfolio-items/canelinha-do-para/": {
+    "destination": "/produtos/brioches/canelinha-do-para",
+    "permanent": true
+  },
+  "/portfolio-items/cantuccini/": {
+    "destination": "/produtos/biscoitos/cantuccini",
+    "permanent": true
+  },
+  "/portfolio-items/challah/": {
+    "destination": "/produtos/brioches/challah",
+    "permanent": true
+  },
+  "/portfolio-items/challah-c-passas-e-mel/": {
+    "destination": "/produtos/brioches/challah-c-passas-e-mel",
+    "permanent": true
+  },
+  "/portfolio-items/challah-de-festa/": {
+    "destination": "/produtos/brioches/challah-de-festa",
+    "permanent": true
+  },
+  "/portfolio-items/cookie/": {
+    "destination": "/produtos/biscoitos/cookie",
+    "permanent": true
+  },
+  "/portfolio-items/focaccia/": {
+    "destination": "/produtos/paes/focaccia",
+    "permanent": true
+  },
+  "/portfolio-items/integral/": {
+    "destination": "/produtos/paes/integral",
+    "permanent": true
+  },
+  "/portfolio-items/meteil-pao-de-centeio/": {
+    "destination": "/produtos/paes/meteil-pao-de-centeio",
+    "permanent": true
+  },
+  "/portfolio-items/multigraos/": {
+    "destination": "/produtos/paes/multigraos",
+    "permanent": true
+  },
+  "/portfolio-items/pain-depices/": {
+    "destination": "/produtos/paes/pain-depices",
+    "permanent": true
+  },
+  "/portfolio-items-de-leite/": {
+    "destination": "/produtos/brioches/pao-petropolis-pao-de-leite",
+    "permanent": true
+  },
+  "/portfolio-items/provencal/": {
+    "destination": "/produtos/brioches/provencal",
+    "permanent": true
+  },
+  "/portfolio-items/provencal-c-azeitona/": {
+    "destination": "/produtos/brioches/provencal-c-azeitona",
+    "permanent": true
+  },
+  "/portfolio-items/provencal-com-chocolate/": {
+    "destination": "/produtos/brioches/provencal-com-chocolate",
+    "permanent": true
+  },
+  "/portfolio-items/brioches/provencal-com-goiabada/": {
+    "destination": "/produtos/brioches/provencal-com-goiabada",
+    "permanent": true
+  }
+}
