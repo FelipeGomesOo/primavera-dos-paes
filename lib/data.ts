@@ -1065,3 +1065,27 @@ export async function getGeral() {
     class_botao_produtos: g.class_botao_produtos,
   };
 }
+
+// Adicione esta função ao final de lib/data.ts
+export async function getPageBySlug(slug: string) {
+  const data = await fetchAPIGraphql(
+    `query getPageData {
+      page: pageBy(uri: "${slug}") {
+        id
+        title
+        content
+        slug
+        b2b { 
+          tituloDaSecaoPrincipal 
+          rotuloImagem {
+            node {
+              mediaItemUrl
+            }
+          }
+        }
+      }
+    }`,
+    `tagGetPage${slug}`
+  );
+  return data.page; // O objeto da página
+}

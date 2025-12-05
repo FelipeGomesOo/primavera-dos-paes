@@ -25,6 +25,14 @@ const nextConfig = {
         port,
         pathname: "/wp-content/uploads/**",
       },
+      // **ADICIONE ESTE NOVO BLOCO:**
+      {
+        protocol: "https",
+        hostname: "admin.primaveradospaes.com.br",
+        port: "", // Deixe vazio se não houver porta
+        pathname: "/wp-content/uploads/**",
+      },
+
     ],
   },
 };
