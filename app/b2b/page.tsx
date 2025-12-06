@@ -10,11 +10,12 @@ export default async function B2BPage() {
   
   const pageData = await getPageBySlug('b2b'); 
   
-  if (!pageData || !pageData.b2b) { 
+if (!pageData || !pageData.b2b) { 
     return (
       <main className="container mx-auto p-8 text-center">
         <h1>Página B2B em Configuração</h1>
-        <p>Dados não encontrados. Verifique se o slug da página no WP é 'b2b'.</p>
+        {/* CORREÇÃO DEFINITIVA: Usando &quot; para fazer as aspas sem erro */}
+        <p>Dados não encontrados. Verifique se o slug da página no WP é &quot;b2b&quot;.</p>
       </main>
     );
   }

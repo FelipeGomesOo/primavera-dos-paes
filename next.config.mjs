@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
 
+// --- CORREÇÃO PARA O BUILD LOCAL ---
+// Se o computador não encontrar a variável, forçamos o endereço oficial aqui:
+if (!process.env.BASE_URL) {
+  process.env.BASE_URL = "https://admin.primaveradospaes.com.br";
+}
+
+// Agora a verificação original vai passar sem travar
 if (!URL.canParse(process.env.BASE_URL)) {
   throw new Error(`
     Please provide a valid WordPress instance URL.
@@ -25,14 +32,12 @@ const nextConfig = {
         port,
         pathname: "/wp-content/uploads/**",
       },
-      // **ADICIONE ESTE NOVO BLOCO:**
       {
         protocol: "https",
         hostname: "admin.primaveradospaes.com.br",
-        port: "", // Deixe vazio se não houver porta
+        port: "", 
         pathname: "/wp-content/uploads/**",
       },
-
     ],
   },
 };
