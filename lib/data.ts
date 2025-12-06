@@ -7,7 +7,7 @@ const API_URL = process.env.API_URL;
 
 //const base64Credentials = btoa(`${username}:${password}`);
 
-async function fetchAPIGraphql(query = "", myTag = "") {
+export async function fetchAPIGraphql(query = "", myTag = "") {
   const res = await fetch("https://admin.primaveradospaes.com.br/graphql", {
     next: { tags: [`${myTag}`] },
     headers: { "Content-Type": "application/json" },
@@ -69,6 +69,11 @@ export async function getMenuItems() {
       id: 4,
       title: { rendered: "Sobre" },
       url: "https://admin.primaveradospaes.com.br/#sobre",
+    },
+      {
+      id: 5,
+      title: { rendered: "Para Empresas" },
+      url: "/b2b",
     },
   ];
 
@@ -1066,7 +1071,8 @@ export async function getGeral() {
   };
 }
 
-// Adicione esta função ao final de lib/data.ts
+// --- AQUI COMEÇA O SEU CÓDIGO NOVO (E NADA MAIS DEPOIS) ---
+
 export async function getPageBySlug(slug: string) {
   const data = await fetchAPIGraphql(
     `query getPageData {
@@ -1082,10 +1088,36 @@ export async function getPageBySlug(slug: string) {
               mediaItemUrl
             }
           }
+          beneficiosTitulo
+          listaBeneficios 
+          servicosTitulo
+          servicosDescricao
+          imagemServicos {
+            node {
+              mediaItemUrl
+            }
+          }
+          ctaMeioTitulo
+          ctaMeioLink
+          
+          # --- NOVO BLOCO (GRID) ---
+          griditem {
+            titulo1
+            titulo2
+            titulo3
+            # Se no futuro voce criar os textos e icones no WP, 
+            # basta remover o # das linhas abaixo:
+            # texto1
+            # texto2
+            # texto3
+            # icone1 { node { mediaItemUrl } }
+            # icone2 { node { mediaItemUrl } }
+            # icone3 { node { mediaItemUrl } }
+          }
         }
       }
     }`,
     `tagGetPage${slug}`
   );
-  return data.page; // O objeto da página
+  return data.page; 
 }
